@@ -12,7 +12,7 @@
 	}
 	
 	$variable = $_GET['search'];
-	$stmt = $db->prepare('SELECT * FROM scripture WHERE book =:book');
+	$stmt = $db->prepare('SELECT book, content FROM scripture WHERE book =:book');
 	$stmt->bindValue(':book', $variable, PDO::PARAM_STR);
 	$stmt->execute();
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -34,6 +34,17 @@
 		</form>
 		<p>
 			<?php
+				$stmt = $db->prepare('SELECT * FROM scripture WHERE book =:book');
+				$stmt->bindValue(':book', $variable, PDO::PARAM_STR);
+				$stmt->execute();
+				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				foreach ($db->query($rows) as $read) {
+					echo '<p>';
+					echo '<strong>' .$row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</strong> - "' . $row['content'] . '"';
+					echo '</p>';
+
+				}	
+				echo '<hr>';	
 				foreach ($db->query('SELECT * FROM scripture') as $row)
 				{
 					echo '<p>';
