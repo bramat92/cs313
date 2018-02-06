@@ -33,7 +33,7 @@
 				$stmt->bindValue(':book', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				foreach ($db->query($stmt) as $read) {
+				foreach ($db->query($rows) as $read) {
 					echo '<p>';
 					echo '<strong>' .$read['book'] . ' ' . $read['chapter'] . ':' . $read['verse'] . '</strong> - "' . $read['content'] . '"';
 					echo '</p>';
