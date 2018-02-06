@@ -12,7 +12,8 @@
 	}
 	
 	$variable = $_GET['search'];
-	$stmt = $db->prepare('SELECT * FROM scripture WHERE book =\''.$variable.'\'');
+	$stmt = $db->prepare('SELECT * FROM scripture WHERE book =:book');
+	$stmt->bindValue(':book', $variable, PDO::PARAM_STR);
 	$stmt->execute();
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	echo $rows;
