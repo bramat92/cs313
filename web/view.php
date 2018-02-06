@@ -10,6 +10,13 @@
 		echo 'Error!: ' . $ex->getMessage();
 		die();
 	}
+	
+	$variable = $_GET['search'];
+	$stmt = $db->prepare('SELECT * FROM scripture WHERE book =\''.$variable.'\'');
+	$stmt->execute();
+	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	echo $rows;
+	
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +27,10 @@
 	</head>
 	<body>
 		<h1>Scripture Title</h1>
+		<form action="view.php" method="get">
+			<input type="text" name="search" placeholder="search">
+			<input type="submit" value="search">
+		</form>
 		<p>
 			<?php
 				foreach ($db->query('SELECT * FROM scripture') as $row)
