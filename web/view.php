@@ -12,12 +12,7 @@
 	}
 	
 	$variable = $_GET['search'];
-	$stmt = $db->prepare('SELECT book, content FROM scripture WHERE book =:book');
-	$stmt->bindValue(':book', $variable, PDO::PARAM_STR);
-	$stmt->execute();
-	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	echo $rows;
-	
+	echo $variable;
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +33,7 @@
 				$stmt->bindValue(':book', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				foreach ($db->query($rows) as $read) {
+				foreach ($db->query($stmt) as $read) {
 					echo '<p>';
 					echo '<strong>' .$read['book'] . ' ' . $read['chapter'] . ':' . $read['verse'] . '</strong> - "' . $read['content'] . '"';
 					echo '</p>';
