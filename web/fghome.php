@@ -71,10 +71,10 @@
 			</nav>
 			<p>
 			<?php
-				foreach ($db->query('SELECT * FROM users') as $row)
+				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = 1 LIMIT 10;') as $row)
 				{
 					echo '<p>';
-					echo '<strong>' .$row['username'];
+					echo '<strong>' .$row['post'] . ' by ' . $row['username'];
 					echo '</p>';
 				}
 			?>
