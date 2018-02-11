@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$_SESSION["uname"] = $_GET["username"]	
+	$_SESSION["uname"] = $_GET["username"];	
 	echo "The session is " . $_SESSION["uname"];
 ?>
 
