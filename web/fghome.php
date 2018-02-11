@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	echo $_SESSION["uname"];
+	echo "The session is " . $_SESSION["uname"];
 ?>
 
 <!DOCTYPE html>
