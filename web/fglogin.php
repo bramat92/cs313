@@ -1,6 +1,5 @@
 <?php
-	session_start();
-	$_SESSION["uname"] = $_GET["username"]	
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +36,7 @@
 		<h1>Friendstagram</h1>
 		<div class="container">
 			<h2>Log In</h2>
-			<form action="fglogin.php" method="GET">
+			<form action="fghome.php" method="GET">
 				<div class="form-group">
 					<label for="username">Please enter your username</label>
 					<input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
