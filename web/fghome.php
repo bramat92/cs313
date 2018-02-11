@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	$_SESSION["uname"] = $_GET["username"];	
+	$variable = $_SESSION['uname'];
 	echo "The session is " . $_SESSION["uname"];
 	
 	try
@@ -71,7 +72,10 @@
 			</nav>
 			<p>
 			<?php
-				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = 1 LIMIT 10;') as $row)
+				$stmt = $db->prepare('SELECT * FROM users WHERE username =:name');
+				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
+				$stmt->execute();
+				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = $stmt LIMIT 10;') as $row)
 				{
 					echo '<p>';
 					echo '<strong>' .$row['post'] . ' by ' . $row['username'];
