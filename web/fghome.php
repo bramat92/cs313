@@ -2,6 +2,18 @@
 	session_start();
 	$_SESSION["uname"] = $_GET["username"];	
 	echo "The session is " . $_SESSION["uname"];
+	
+	try
+		{
+			$user = 'auobnrfenbtijr';
+			$password = 'd88bd9049162b1341d8970fe4ebeeae2542aade94453e76f3e73460cfbfa424c';
+			$db = new PDO('pgsql:host=ec2-54-225-103-255.compute-1.amazonaws.com;dbname=d4sni6bgp10g1t', $user, $password);
+		}
+		catch (PDOException $ex)
+		{
+			echo 'Error!: ' . $ex->getMessage();
+			die();
+		}
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +69,15 @@
 					</form>
 				</div>
 			</nav>
+			<p>
+			<?php
+				foreach ($db->query('SELECT * FROM users') as $row)
+				{
+					echo '<p>';
+					echo '<strong>' .$row['username'];
+					echo '</p>';
+				}
+			?>
 		</div>
 
 		<!-- Optional JavaScript -->
