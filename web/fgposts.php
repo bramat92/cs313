@@ -96,18 +96,9 @@
 					</form>
 				</div>
 			</nav>
-			<p id = "welcome">Welcome</p>
+			<p id = "welcome">Your Posts</p>
 			<?php
 				
-				$stmt = $db->prepare('SELECT * FROM users WHERE username=:name');
-				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
-				$stmt->execute();
-				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
-				{
-					echo '<p id = "name">';
-					echo $rows['firstname'] . ' ' . $rows['lastname']; 
-					echo '</p>';
-				}
 				
 				$stmt = $db->prepare('SELECT post, username FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name)');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
