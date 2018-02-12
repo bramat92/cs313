@@ -2,6 +2,7 @@
 	session_start();
 	$_SESSION["uname"] = $_GET["username"];	
 	$variable = $_SESSION['uname'];
+	echo $variable;
 	
 	try
 		{
@@ -78,7 +79,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="fghome.php">Home <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Posts</a>
@@ -103,7 +104,7 @@
 			<?php
 				
 				
-				$stmt = $db->prepare('SELECT post, username, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
+				$stmt = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
