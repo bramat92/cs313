@@ -78,11 +78,12 @@
 				
 				foreach ($db->query('SELECT id FROM users WHERE username = \'bernie\'') as $row)
 				{
+					$row[id] = $result;
 					echo '<p>';
 					echo 'The id is: ' .$row['id'];
 					echo '</p>';
 				}
-				
+				echo 'My username id is: '. $result;
 				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = 1') as $row)
 				{
 					echo '<p>';
