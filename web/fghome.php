@@ -84,10 +84,10 @@
 				}
 
 				echo 'My username id is: '. $result;
-				foreach ($db->query('SELECT posts FROM posts WHERE posts.user_id = (SELECT id FROM users WHERE username = \'bernie\')') as $row)
+				foreach ($db->query('SELECT * FROM posts WHERE posts.user_id = (SELECT id FROM users WHERE username = \'bernie\')') as $row)
 				{
 					echo '<p>';
-					echo '<strong>' .$row['post'] . ' by ' . $row['username'];
+					echo $row['post'];
 					echo '</p>';
 				}
 			?>
