@@ -35,7 +35,12 @@
 				margin: 50px;
 			}
 			body {
-				background-image: url("friends.jpg");
+				 background: url('friends.jpg') no-repeat center center fixed; 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				opacity: 0.5;
 			}
 		</style>
 	</head>
