@@ -94,6 +94,16 @@
 				{
 					echo 'user: ' . $row['username'] . ' Name: ' . $row['firstname'] . '<br/>';
 				}
+				
+				$stmt = $db->prepare('SELECT post, username FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name)');
+				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
+				$stmt->execute();
+				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
+				{
+					echo '<p>';
+					echo $rows['post'] . ' by '. $rows['username'];
+					echo '</p>';
+				}
 			?>
 		</div>
 
