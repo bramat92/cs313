@@ -4,8 +4,7 @@
 		$variable = $_SESSION['uname'];		
 	}
 
-	echo $variable;
-	
+		
 	try
 		{
 			$user = 'auobnrfenbtijr';
@@ -81,10 +80,10 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="fghome.php">Home <span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="fghome.php">Home </a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Posts</a>
+							<a class="nav-link" href="#">Posts<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Followers</a>
