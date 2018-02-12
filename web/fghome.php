@@ -72,29 +72,6 @@
 			<p>
 			<?php
 				
-				foreach ($db->query('SELECT id FROM users WHERE username = \'$variable\'') as $row)
-				{
-					
-					echo '<p>';
-					echo 'The id is: ' .$row['id'];
-					echo '</p>';
-					$result = $row['id'];
-				}
-
-				echo 'My username id is: '. $result;
-				foreach ($db->query('SELECT post, username, posts.created_at FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username = \'kevin\')') as $row)
-				{
-					echo '<p>';
-					echo $row['post'] . ' posted on ' . $row['created_at'] . ' by '. $row['username'];
-					echo '</p>';
-				}
-				
-				$statement = $db->query('SELECT * FROM users');
-				while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-				{
-					echo 'user: ' . $row['username'] . ' Name: ' . $row['firstname'] . '<br/>';
-				}
-				
 				$stmt = $db->prepare('SELECT post, username FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name)');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
