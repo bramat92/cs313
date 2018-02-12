@@ -109,17 +109,11 @@
 					echo '</p>';
 				}
 				
-				$stmt = $db->prepare('SELECT * FROM posts JOIN users ON users.id = posts.user_id)');
-				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
-				$stmt->execute();
-				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
+				foreach ($db->query('SELECT * FROM posts JOIN users ON users.id = posts.user_id') as $rows)
 				{
 					echo '<div class="alert alert-secondary" role="alert">';
-						echo $rows['post'] . ' by '. $rows['firstname'] . ' ' . $rows['lastname'] . $rows['posts.created_at'];
+						echo $rows['post'] . ' by '. $rows['firstname'] . ' ' . $rows['lastname'];
 					echo '</div>';
-					echo '<p>';
-					
-					echo '</p>';
 				}
 			?>
 		</div>
