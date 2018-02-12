@@ -102,17 +102,7 @@
 			</nav>
 			<p id = "welcome">Your Followers</p>
 			<?php
-				$stmt = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
-				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
-				$stmt->execute();
-				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
-				{
-					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
-					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
-					echo '</div>';
-					echo '<br>';
-				}
+				
 				
 				$stmt = $db->prepare('SELECT firstname, lastname FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name)');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
@@ -126,16 +116,7 @@
 					//echo '<br>';
 				}
 				
-				$stmt = $db->prepare('SELECT firstname, lastname FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name)');
-				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
-				$stmt->execute();
-				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
-				{
-					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
-					echo '</div>';
-					echo '<br>';
-				}
+				
 			?>
 		</div>
 
