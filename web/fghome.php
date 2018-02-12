@@ -73,12 +73,8 @@
 			</nav>
 			<p>
 			<?php
-				$stmt = $db->prepare('SELECT id FROM users WHERE username =:name');
-				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
-				echo $stmt;
-				$stmt->execute();
-				echo $stmt;
-				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = "$stmt" LIMIT 10;') as $row)
+				
+				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = (SELECT id FROM users WHERE username = 'bernie')') as $row)
 				{
 					echo '<p>';
 					echo '<strong>' .$row['post'] . ' by ' . $row['username'];
