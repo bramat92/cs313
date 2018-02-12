@@ -84,7 +84,7 @@
 				}
 
 				echo 'My username id is: '. $result;
-				foreach ($db->query('SELECT post, username, created_at FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username = \'bernie\')') as $row)
+				foreach ($db->query('SELECT post, username, posts.created_at FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username = \'bernie\')') as $row)
 				{
 					echo '<p>';
 					echo $row['post'] . ' posted on ' . $row['created_at'] . ' by '. $row['username'];
