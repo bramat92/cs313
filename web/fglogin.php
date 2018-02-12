@@ -17,7 +17,6 @@
 			h1 {
 				text-align: center;
 				text-decoration: underline;
-				color: fuchsia;
 				margin: 50px;
 			}
 			.container {
