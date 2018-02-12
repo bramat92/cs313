@@ -70,46 +70,26 @@ INSERT INTO users (username, firstname, lastname, created_at) VALUES
 ('gavins', 'Gavin', 'Sanchez', '2016-08-07 16:25:48.561');
 
 INSERT INTO posts (post, user_id) VALUES
-('Only I can change my life. No one can do it for me.
-Read more at: https://www.brainyquote.com/topics/motivational', 1),
-('Life is 10% what happens to you and 90% how you react to it.
-Read more at: https://www.brainyquote.com/topics/motivational', 1),
-('Good, better, best. Never let it rest. Til your good is better and your better is best.
-Read more at: https://www.brainyquote.com/topics/motivational', 2),
-('It does not matter how slowly you go as long as you do not stop.
-Read more at: https://www.brainyquote.com/topics/motivational', 2),
-('With the new day comes new strength and new thoughts.
-Read more at: https://www.brainyquote.com/topics/motivational', 3),
-('Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.
-Read more at: https://www.brainyquote.com/topics/motivational', 3),
-('In order to succeed, we must first believe that we can.
-Read more at: https://www.brainyquote.com/topics/motivational', 4),
-('Failure will never overtake me if my determination to succeed is strong enough.
-Read more at: https://www.brainyquote.com/topics/motivational', 4),
-('Expect problems and eat them for breakfast.
-Read more at: https://www.brainyquote.com/topics/motivational', 5),
-('Always do your best. What you plant now, you will harvest later.
-Read more at: https://www.brainyquote.com/topics/motivational', 5),
-('The secret of getting ahead is getting started.
-Read more at: https://www.brainyquote.com/topics/motivational', 6),
-('It always seems impossible until its done.
-Read more at: https://www.brainyquote.com/topics/motivational', 6),
-('Quality is not an act, it is a habit.
-Read more at: https://www.brainyquote.com/topics/motivational', 7),
-('If you can dream it, you can do it.
-Read more at: https://www.brainyquote.com/topics/motivational', 7),
-('The past cannot be changed. The future is yet in your power.
-Read more at: https://www.brainyquote.com/topics/motivational', 8),
-('We may encounter many defeats but we must not be defeated.
-Read more at: https://www.brainyquote.com/topics/motivational', 8),
-('What you do today can improve all your tomorrows.
-Read more at: https://www.brainyquote.com/topics/motivational', 9),
-('A creative man is motivated by the desire to achieve, not by the desire to beat others.
-Read more at: https://www.brainyquote.com/topics/motivational', 9),
-('Keep your eyes on the stars, and your feet on the ground. 
-Read more at: https://www.brainyquote.com/topics/motivational', 10),
-('Problems are not stop signs, they are guidelines.
-Read more at: https://www.brainyquote.com/topics/motivational', 10);
+('Only I can change my life. No one can do it for me.', 1),
+('Life is 10% what happens to you and 90% how you react to it.', 1),
+('Good, better, best. Never let it rest. Til your good is better and your better is best.', 2),
+('It does not matter how slowly you go as long as you do not stop.', 2),
+('With the new day comes new strength and new thoughts.', 3),
+('Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.', 3),
+('In order to succeed, we must first believe that we can.', 4),
+('Failure will never overtake me if my determination to succeed is strong enough.', 4),
+('Expect problems and eat them for breakfast.', 5),
+('Always do your best. What you plant now, you will harvest later.', 5),
+('The secret of getting ahead is getting started.', 6),
+('It always seems impossible until its done.', 6),
+('Quality is not an act, it is a habit.', 7),
+('If you can dream it, you can do it.', 7),
+('The past cannot be changed. The future is yet in your power.', 8),
+('We may encounter many defeats but we must not be defeated.', 8),
+('What you do today can improve all your tomorrows.', 9),
+('A creative man is motivated by the desire to achieve, not by the desire to beat others.', 9),
+('Keep your eyes on the stars, and your feet on the ground. ', 10),
+('Problems are not stop signs, they are guidelines.', 10);
 
 INSERT INTO comments (comment_text, user_id, post_id)  VALUES 
 ('This is super great', 10, 1),
