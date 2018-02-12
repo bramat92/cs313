@@ -114,7 +114,7 @@
 					echo '<br>';
 				}
 				
-				$stmt = $db->prepare('SELECT firstname, lastname FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
+				$stmt = $db->prepare('SELECT firstname, lastname FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name)');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
@@ -126,7 +126,7 @@
 					//echo '<br>';
 				}
 				
-				$stmt = $db->prepare('SELECT firstname, lastname FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
+				$stmt = $db->prepare('SELECT firstname, lastname FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name)');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
