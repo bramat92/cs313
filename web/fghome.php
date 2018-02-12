@@ -118,6 +118,7 @@
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo $rows['post'] . ' by '. $rows['firstname'] . ' ' . $rows['lastname'];
 					echo '</div>';
+					echo '<br>';
 				}
 			?>
 		</div>
