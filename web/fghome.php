@@ -74,7 +74,7 @@
 			<p>
 			<?php
 				
-				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = (SELECT id FROM users WHERE username = 'bernie')') as $row)
+				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = 1') as $row)
 				{
 					echo '<p>';
 					echo '<strong>' .$row['post'] . ' by ' . $row['username'];
