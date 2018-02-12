@@ -62,7 +62,8 @@
 				margin-bottom: 20px;
 			}
 			#displays {
-				
+				margin: auto;
+				width: 700px;
 				display: inline-block;
 			}
 		</style>
