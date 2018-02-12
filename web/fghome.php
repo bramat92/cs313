@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	$_SESSION["uname"] = $_GET["username"];	
-	$variable = $_SESSION['uname'];
+	$variable = $_GET['username'];
 	
 	try
 		{
