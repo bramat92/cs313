@@ -77,9 +77,9 @@
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
-					'<div class=\"alert alert-secondary\" role=\"alert\">'
+					echo '<div class=\"alert alert-secondary\" role=\"alert\">'
 						echo $rows['post'] . ' by '. $rows['username'];
-					'</div>'
+					echo '</div>'
 				}
 			?>
 		</div>
