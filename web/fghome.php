@@ -75,7 +75,8 @@
 			<?php
 				$value = $db->query('SELECT id FROM users WHERE username = "bernie"');
 				echo "The id is: ". $value['id'];
-				foreach ($db->query('SELECT id FROM users WHERE username = 'bernie'') as $row)
+				
+				foreach ($db->query('SELECT id FROM users WHERE username = \'bernie\'') as $row)
 				{
 					echo '<p>';
 					echo 'The id is: ' .$row['id'];
