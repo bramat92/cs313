@@ -88,6 +88,12 @@
 					echo $row['post'] . ' posted on ' . $row['created_at'] . ' by '. $row['username'];
 					echo '</p>';
 				}
+				
+				$statement = $db->query('SELECT * FROM users');
+				while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+				{
+					echo 'user: ' . $row['username'] . ' Name: ' . $row['firstname'] . '<br/>';
+				}
 			?>
 		</div>
 
