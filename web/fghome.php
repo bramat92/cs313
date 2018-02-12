@@ -61,6 +61,10 @@
 				text-align: center;
 				margin-bottom: 20px;
 			}
+			#displays {
+				margin: auto;
+				display: inline-block;
+			}
 		</style>
 	</head>
 	<body>
@@ -111,7 +115,7 @@
 				
 				foreach ($db->query('SELECT * FROM posts JOIN users ON users.id = posts.user_id') as $rows)
 				{
-					echo '<div class="alert alert-secondary" role="alert">';
+					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo $rows['post'] . ' by '. $rows['firstname'] . ' ' . $rows['lastname'];
 					echo '</div>';
 				}
