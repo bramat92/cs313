@@ -3,6 +3,7 @@
 	$_SESSION["uname"] = $_GET["username"];	
 	$variable = $_SESSION['uname'];
 	echo "The session is " . $_SESSION["uname"];
+	echo "The variable name is ". $variable;
 	
 	try
 		{
