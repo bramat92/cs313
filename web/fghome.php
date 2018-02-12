@@ -73,12 +73,8 @@
 			</nav>
 			<p>
 			<?php
-				$stmt = $db->prepare('SELECT id FROM users WHERE username =:name');
-				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
-				$stmt->execute();
-				$value = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				echo 'The id is '. $value['id'];
-				echo 'The value is '. $value;
+				$value = $db->query('SELECT id FROM users WHERE username = \'bernie\'');
+				echo "The id is: ". $value['id'];
 				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = 1') as $row)
 				{
 					echo '<p>';
