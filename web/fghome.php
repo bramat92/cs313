@@ -2,8 +2,6 @@
 	session_start();
 	$_SESSION["uname"] = $_GET["username"];	
 	$variable = $_SESSION['uname'];
-	echo "The session is " . $_SESSION["uname"];
-	echo "The variable name is ". $variable;
 	
 	try
 		{
@@ -74,7 +72,7 @@
 			<p>
 			<?php
 				
-				foreach ($db->query('SELECT id FROM users WHERE username = \'bernie\'') as $row)
+				foreach ($db->query('SELECT id FROM users WHERE username = \'$variable\'') as $row)
 				{
 					
 					echo '<p>';
