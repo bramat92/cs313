@@ -49,7 +49,7 @@
 				text-align: center;
 				margin-top: 20px;
 				font-size: 50px;
-				margin-bottom: 20px;
+				
 			}
 			#friendstagram {
 				font-size: 80px;
@@ -109,13 +109,13 @@
 					echo '</p>';
 				}
 				
-				$stmt = $db->prepare('SELECT post, username FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name)');
+				$stmt = $db->prepare('SELECT * FROM posts JOIN users ON users.id = posts.user_id)');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
 					echo '<div class="alert alert-secondary" role="alert">';
-						echo $rows['post'] . ' by '. $rows['username'];
+						echo $rows['post'] . ' by '. $rows['firstname'] . ' ' . $rows['lastname'] . $rows['posts.created_at'];
 					echo '</div>';
 					echo '<p>';
 					
