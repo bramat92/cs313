@@ -61,6 +61,9 @@
 				text-align: center;
 				margin-bottom: 20px;
 			}
+			#displays {
+				width: 700px;
+			}
 		</style>
 	</head>
 	<body>
@@ -105,12 +108,11 @@
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
-					echo '<div class="alert alert-secondary" role="alert">';
-						echo $rows['post'] . ' by '. $rows['username'];
+					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
+					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 					echo '</div>';
-					echo '<p>';
-					
-					echo '</p>';
+					echo '<br>';
 				}
 			?>
 		</div>
