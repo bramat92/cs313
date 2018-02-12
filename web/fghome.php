@@ -78,7 +78,7 @@
 				
 				foreach ($db->query('SELECT id FROM users WHERE username = \'bernie\'') as $row)
 				{
-					$row[id] = $result;
+					$row['id'] = $result;
 					echo '<p>';
 					echo 'The id is: ' .$row['id'];
 					echo '</p>';
