@@ -74,7 +74,7 @@
 			<p>
 			<?php
 				$stmt = $db->prepare('SELECT id FROM users WHERE username =:name');
-				$stmt->bindValue(':name', 'bernie', PDO::PARAM_STR);
+				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				$value = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				echo 'The value is '. $value;
