@@ -83,13 +83,13 @@
 							<a class="nav-link" href="fghome.php">Home <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="#">Posts</a>
+							<a class="nav-link" href="fgposts.php">Posts</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Followers</a>
+							<a class="nav-link" href="followees.php">Followers</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Following</a>
+							<a class="nav-link" href="fgfollowing.php">Following</a>
 						</li>
 						
 

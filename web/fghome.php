@@ -91,7 +91,7 @@
 							<a class="nav-link" href="followees.php">Followers</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Following</a>
+							<a class="nav-link" href="fgfollowing.php">Following</a>
 						</li>
 						
 
