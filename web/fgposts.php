@@ -4,6 +4,8 @@
 		$variable = $_SESSION['uname'];		
 	}
 
+	echo $variable;
+	
 	try
 		{
 			$user = 'auobnrfenbtijr';
