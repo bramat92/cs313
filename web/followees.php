@@ -1,8 +1,9 @@
 <?php
 	session_start();
-	$_SESSION["uname"] = $_GET["username"];	
-	$variable = $_SESSION['uname'];
-	
+	if(isset($_SESSION['uname'])) {
+		$variable = $_SESSION['uname'];		
+	}
+
 	try
 		{
 			$user = 'auobnrfenbtijr';
@@ -49,7 +50,7 @@
 				text-align: center;
 				margin-top: 20px;
 				font-size: 50px;
-				
+				margin-bottom: 20px;
 			}
 			#friendstagram {
 				font-size: 80px;
@@ -62,11 +63,7 @@
 				margin-bottom: 20px;
 			}
 			#displays {
-				margin-left: auto;
-				margin-right: auto;
-				margin-bottom: 10px;
 				width: 700px;
-				display: inline-block;
 			}
 		</style>
 	</head>
@@ -85,10 +82,10 @@
 							<a class="nav-link" href="fghome.php">Home <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="fgposts.php">Posts</a>
+							<a class="nav-link" href="#">Posts</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="followees.php">Followers</a>
+							<a class="nav-link" href="#">Followers</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Following</a>
@@ -103,24 +100,17 @@
 					</form>
 				</div>
 			</nav>
-			<p id = "welcome">Welcome</p>
+			<p id = "welcome">Your Posts</p>
 			<?php
 				
-				$stmt = $db->prepare('SELECT * FROM users WHERE username=:name');
+				
+				$stmt = $db->prepare('SELECT * FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT * FROM users WHERE username=:name);) ORDER BY date DESC');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
-					echo '<p id = "name">';
-					echo $rows['firstname'] . ' ' . $rows['lastname']; 
-					echo '</p>';
-				}
-				
-				foreach ($db->query('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id ORDER BY date DESC') as $rows)
-				{
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
-					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 					echo '</div>';
 					echo '<br>';
 				}
