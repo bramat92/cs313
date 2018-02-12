@@ -113,10 +113,10 @@
 					echo '</p>';
 				}
 				
-				foreach ($db->query('SELECT * FROM posts JOIN users ON users.id = posts.user_id') as $rows)
+				foreach ($db->query('SELECT posts, firstname, lastname, to_char(posts.created_at, 'YYYY/MM/DD') AS date FROM posts JOIN users ON users.id = posts.user_id ORDER BY date DESC') as $rows)
 				{
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-						echo $rows['post'] . ' by '. $rows['firstname'] . ' ' . $rows['lastname'];
+						echo $rows['post'] . ' by -'. $rows['firstname'] . ' ' . $rows['lastname'] . '- on \"' . $rows['date'] . '\"';
 					echo '</div>';
 					echo '<br>';
 				}

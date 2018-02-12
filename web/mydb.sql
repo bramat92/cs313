@@ -69,27 +69,27 @@ INSERT INTO users (username, firstname, lastname, created_at) VALUES
 ('ginw', 'Gin', 'Weasel', '2016-06-24 19:36:30.978'), 
 ('gavins', 'Gavin', 'Sanchez', '2016-08-07 16:25:48.561');
 
-INSERT INTO posts (post, user_id) VALUES
-('Only I can change my life. No one can do it for me.', 1),
-('Life is 10% what happens to you and 90% how you react to it.', 1),
-('Good, better, best. Never let it rest. Til your good is better and your better is best.', 2),
-('It does not matter how slowly you go as long as you do not stop.', 2),
-('With the new day comes new strength and new thoughts.', 3),
-('Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.', 3),
-('In order to succeed, we must first believe that we can.', 4),
-('Failure will never overtake me if my determination to succeed is strong enough.', 4),
-('Expect problems and eat them for breakfast.', 5),
-('Always do your best. What you plant now, you will harvest later.', 5),
-('The secret of getting ahead is getting started.', 6),
-('It always seems impossible until its done.', 6),
-('Quality is not an act, it is a habit.', 7),
-('If you can dream it, you can do it.', 7),
-('The past cannot be changed. The future is yet in your power.', 8),
-('We may encounter many defeats but we must not be defeated.', 8),
-('What you do today can improve all your tomorrows.', 9),
-('A creative man is motivated by the desire to achieve, not by the desire to beat others.', 9),
-('Keep your eyes on the stars, and your feet on the ground. ', 10),
-('Problems are not stop signs, they are guidelines.', 10);
+INSERT INTO posts (post, user_id, created_at) VALUES
+('Only I can change my life. No one can do it for me.', 1, '2017-02-16 18:22:10.846'),
+('Life is 10% what happens to you and 90% how you react to it.', 1, '2016-02-21 11:12:32.574'),
+('Good, better, best. Never let it rest. Til your good is better and your better is best.', 2, '2016-06-24 19:36:30.978'),
+('It does not matter how slowly you go as long as you do not stop.', 2, '2017-04-30 13:26:14.496'),
+('With the new day comes new strength and new thoughts.', 3, '2016-08-07 16:25:48.561'),
+('Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.', 3, '2017-04-02 17:11:21.417'),
+('In order to succeed, we must first believe that we can.', 4, '2017-02-21 11:12:32.574'),
+('Failure will never overtake me if my determination to succeed is strong enough.', 4, '2017-02-2 11:12:32.574'),
+('Expect problems and eat them for breakfast.', 5, '2017-05-21 11:12:32.574'),
+('Always do your best. What you plant now, you will harvest later.', 5, '2007-02-21 11:12:32.574'),
+('The secret of getting ahead is getting started.', 6, '2017-02-11 11:12:32.574'),
+('It always seems impossible until its done.', 6, '2017-02-21 11:12:32.54'),
+('Quality is not an act, it is a habit.', 7, '2017-09-21 11:12:32.574'),
+('If you can dream it, you can do it.', 7, '2017-02-01 11:12:32.574'),
+('The past cannot be changed. The future is yet in your power.', 8, '2012-02-21 11:12:32.574'),
+('We may encounter many defeats but we must not be defeated.', 8, '2017-02-21 11:14:32.574'),
+('What you do today can improve all your tomorrows.', 9, '2017-02-27 11:12:32.574'),
+('A creative man is motivated by the desire to achieve, not by the desire to beat others.', 9, '2017-02-21 11:12:32.57'),
+('Keep your eyes on the stars, and your feet on the ground. ', 10, '2017-02-21 11:12:30.574'),
+('Problems are not stop signs, they are guidelines.', 10, '2018-02-09 11:12:32.574');
 
 INSERT INTO comments (comment_text, user_id, post_id)  VALUES 
 ('This is super great', 10, 1),
