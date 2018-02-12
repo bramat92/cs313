@@ -62,7 +62,9 @@
 				margin-bottom: 20px;
 			}
 			#displays {
-				margin: auto;
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 10px;
 				width: 700px;
 				display: inline-block;
 			}
