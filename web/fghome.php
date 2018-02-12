@@ -73,8 +73,9 @@
 			</nav>
 			<p>
 			<?php
-				$value = $db->query('SELECT id FROM users WHERE username = \'bernie\'');
+				$value = $db->query('SELECT id FROM users WHERE username = "bernie"');
 				echo "The id is: ". $value['id'];
+				
 				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = 1') as $row)
 				{
 					echo '<p>';
