@@ -73,7 +73,9 @@
 			</nav>
 			<p>
 			<?php
-				
+				$statement = $db->query('SELECT id FROM users WHERE username = 'bernie'');
+				$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+				echo $results;
 				foreach ($db->query('SELECT * FROM users JOIN posts ON users.id = 1') as $row)
 				{
 					echo '<p>';
