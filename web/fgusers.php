@@ -1,13 +1,8 @@
 <?php
 	session_start();
-	
 	if(isset($_SESSION['uname'])) {
-			$variable = $_SESSION['uname'];		
-	} else {
-		$_SESSION["uname"] = $_GET["username"];	
-		$variable = $_SESSION['uname'];
+		$variable = $_SESSION['uname'];		
 	}
-	
 	try
 		{
 			$user = 'auobnrfenbtijr';
