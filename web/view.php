@@ -30,12 +30,12 @@
 			
 		$newId = $pdo->lastInsertId('scripture_id_seq');
 		echo $newid;
-		$td = $db->prepare('SELECT id FROM topic WHERE name = :tpname');
-		$td->bindValue(':tpname', $topicname, PDO::PARAM_STR);
-		$td->execute();
-		$row = $td->fetchAll(PDO::FETCH_ASSOC);
-		$nrow = $row['id'];
-		echo $nrow;
+//		$td = $db->prepare('SELECT id FROM topic WHERE name = :tpname');
+//		$td->bindValue(':tpname', $topicname, PDO::PARAM_STR);
+//		$td->execute();
+//		$row = $td->fetchAll(PDO::FETCH_ASSOC);
+//		$nrow = $row['id'];
+//		echo $nrow;
 //		//$stm = $db->query('INSERT INTO stopic (scripture_id, topic_id) VALUES ($newid, $nrow)');
 	}
 	
