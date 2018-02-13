@@ -118,7 +118,7 @@
 						echo '</p>';
 					}
 					
-					foreach ($db->query('SELECT post, firstname, lastname, to_char(users.created_at, \'YYYY/MM/DD\') AS date FROM users') as $rows)
+					foreach ($db->query('SELECT * FROM users') as $rows)
 					{
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
