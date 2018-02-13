@@ -11,9 +11,7 @@
 		die();
 	}
 	
-	$variable = $_GET['search'];
-	echo $variable;
-
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,17 +27,6 @@
 		</form>
 		<p>
 			<?php
-				$stmt = $db->prepare('SELECT * FROM scripture WHERE book =:book');
-				$stmt->bindValue(':book', $variable, PDO::PARAM_STR);
-				$stmt->execute();
-				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				foreach ($db->query($rows) as $read) {
-					echo '<p>';
-					echo '<strong>' .$read['book'] . ' ' . $read['chapter'] . ':' . $read['verse'] . '</strong> - "' . $read['content'] . '"';
-					echo '</p>';
-
-				}	
-				echo '<hr>';	
 				foreach ($db->query('SELECT * FROM scripture') as $row)
 				{
 					echo '<p>';
@@ -49,5 +36,23 @@
 			?>
 		</p>
 		
+		<form action="view.php" method="get">
+			<input type="text" name="book" placeholder="book">
+			<input type="text" name="chapter" placeholder="chapter">
+			<input type="text" name="verse" placeholder="verse">
+			<input type="text" name="content" placeholder="content">
+			<?php
+				
+			foreach($db->query('SELECT name FROM topic') as $row) {
+				echo '<input type="checkbox" name="topicname" placeholder=" topic name" value = "' . $row['name'] . '">';
+				echo $row['name'] . '<br>';
+			}
+			
+			?>
+			<input type="submit" value="search">
+		</form>
+		
+		
+
 	</body>
 </html>
