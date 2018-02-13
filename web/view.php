@@ -28,9 +28,9 @@
 			$stmt->bindValue(':content', $content, PDO::PARAM_STR);
 			$stmt->execute();	
 			
-		$newid = $pdo->PDO::lastInsertId('scripture_id_seq');
+		$newid = $pdo->lastInsertId('scripture_id_seq');
 		
-		$td = $db->query('SELECT id FROM topic WHERE name = :tpname');
+		$td = $db->prepare('SELECT id FROM topic WHERE name = :tpname');
 		$td->bindValue(':tpname', $topicname, PDO::PARAM_STR);
 		$td->execute();
 		$row = $td->fetchAll(PDO::FETCH_ASSOC);
