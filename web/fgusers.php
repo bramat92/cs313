@@ -118,10 +118,11 @@
 					echo '</p>';
 				}
 				
-				foreach ($db->query('SELECT username, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM users ORDER BY date') as $rows)
+				foreach ($db->query('SELECT username, firstname, lastname, to_char(users.created_at, \'YYYY/MM/DD\') AS date FROM users') as $rows)
 				{
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-					echo 'Username: ' . $rows['username'] . '<br>' . $rows['firstname'] . ' ' . $rows['lastname'] . '<br> Member since: ' . $rows['date']; 
+					echo 'Username: ' . $rows['username'] . '<br>' . $rows['firstname'] . ' ' . $rows['lastname'];
+					echo '<br> Member since: ' . $rows['date']; 
 					echo '</div>';
 					echo '<br>';
 				}
