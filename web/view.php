@@ -18,13 +18,23 @@
 			$chapter = $_GET['chapter'];
 			$verse = $_GET['verse'];
 			$content = $_GET['content'];
+			$topicname = $_GET['topicname'];
+			
 
 		$stmt = $db->prepare('INSERT INTO scripture (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)');
 			$stmt->bindValue(':book', $book, PDO::PARAM_STR);
 			$stmt->bindValue(':chapter', $chapter, PDO::PARAM_INT);
 			$stmt->bindValue(':verse', $verse, PDO::PARAM_INT);
 			$stmt->bindValue(':content', $content, PDO::PARAM_STR);
-			$stmt->execute();		
+			$stmt->execute();	
+			
+		$newid = $pdo->PDO::lastInsertId()('scripture_id_seq');
+		
+		$td = $db->query('SELECT id FROM topic WHERE name = :tpname');
+		$td->bindValue(':tpname', $topicname, PDO::PARAM_STR);
+		$td->execute();
+		$row = $td->fetchAll(PDO::FETCH_ASSOC);
+		$stm = $db->query('INSERT INTO stopic (scripture_id, topic_id) VALUES ($newid, $row['id'])');
 	}
 	
 ?>
