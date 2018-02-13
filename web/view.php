@@ -34,7 +34,8 @@
 		$td->bindValue(':tpname', $topicname, PDO::PARAM_STR);
 		$td->execute();
 		$row = $td->fetchAll(PDO::FETCH_ASSOC);
-		$stm = $db->query('INSERT INTO stopic (scripture_id, topic_id) VALUES ($newid, $row['id'])');
+		$nrow = $row['id'];
+		$stm = $db->query('INSERT INTO stopic (scripture_id, topic_id) VALUES ($newid, $nrow)');
 	}
 	
 ?>
