@@ -11,6 +11,21 @@
 		die();
 	}
 	
+		
+	
+	if (isset($_GET['button'])){
+		$book = $_GET['book'];
+			$chapter = $_GET['chapter'];
+			$verse = $_GET['verse'];
+			$content = $_GET['content'];
+
+		$stmt = $db->prepare('INSERT INTO scripture (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)');
+			$stmt->bindValue(':book', $book, PDO::PARAM_STR);
+			$stmt->bindValue(':chapter', $chapter, PDO::PARAM_INT);
+			$stmt->bindValue(':verse', $verse, PDO::PARAM_INT);
+			$stmt->bindValue(':content', $content, PDO::PARAM_STR);
+			$stmt->execute();		
+	}
 	
 ?>
 <!DOCTYPE html>
@@ -40,7 +55,7 @@
 			<input type="text" name="book" placeholder="book">
 			<input type="text" name="chapter" placeholder="chapter">
 			<input type="text" name="verse" placeholder="verse">
-			<input type="text" name="content" placeholder="content">
+			<input type="text" name="content" placeholder="content"><br>
 			<?php
 				
 			foreach($db->query('SELECT name FROM topic') as $row) {
@@ -49,7 +64,7 @@
 			}
 			
 			?>
-			<input type="submit" value="search">
+			<input type="submit" name="button" value="insert">
 		</form>
 		
 		
