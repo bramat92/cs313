@@ -3,7 +3,7 @@
 	if(isset($_SESSION['uname'])) {
 		$variable = $_SESSION['uname'];		
 	}
-	echo $variable;
+	
 	try
 		{
 			$user = 'auobnrfenbtijr';
