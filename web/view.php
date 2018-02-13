@@ -35,7 +35,8 @@
 		$td->execute();
 		$row = $td->fetchAll(PDO::FETCH_ASSOC);
 		$nrow = $row['id'];
-		$stm = $db->query('INSERT INTO stopic (scripture_id, topic_id) VALUES ($newid, $nrow)');
+		echo $nrow;
+		//$stm = $db->query('INSERT INTO stopic (scripture_id, topic_id) VALUES ($newid, $nrow)');
 	}
 	
 ?>
