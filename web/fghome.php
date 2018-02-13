@@ -98,7 +98,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="fgfollowing.php">Following</a>
 						</li>
-						
+						<li class="nav-item">
+							<a class="nav-link" href="fgusers.php">Users</a>
+						</li>
 
 						
 					</ul>

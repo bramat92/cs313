@@ -1,10 +1,13 @@
 <?php
 	session_start();
+	
 	if(isset($_SESSION['uname'])) {
-		$variable = $_SESSION['uname'];		
+			$variable = $_SESSION['uname'];		
+	} else {
+		$_SESSION["uname"] = $_GET["username"];	
+		$variable = $_SESSION['uname'];
 	}
-
-		
+	
 	try
 		{
 			$user = 'auobnrfenbtijr';
@@ -51,7 +54,7 @@
 				text-align: center;
 				margin-top: 20px;
 				font-size: 50px;
-				margin-bottom: 20px;
+				
 			}
 			#friendstagram {
 				font-size: 80px;
@@ -64,7 +67,11 @@
 				margin-bottom: 20px;
 			}
 			#displays {
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 10px;
 				width: 700px;
+				display: inline-block;
 			}
 		</style>
 	</head>
@@ -72,17 +79,17 @@
 		<p id="friendstagram">Friendstagram</p>
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<a class="navbar-brand" href="fglogin.php">FG</a>
+				<a class="navbar-brand" href="#">FG</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item ">
+						<li class="nav-item active">
 							<a class="nav-link" href="fghome.php">Home <span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item active">
+						<li class="nav-item">
 							<a class="nav-link" href="fgposts.php">Posts</a>
 						</li>
 						<li class="nav-item">
@@ -96,8 +103,6 @@
 						</li>
 
 						
-
-						
 					</ul>
 					<form class="form-inline my-2 my-lg-0">
 						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -105,18 +110,23 @@
 					</form>
 				</div>
 			</nav>
-			<p id = "welcome">Your Posts</p>
+			<p id = "welcome">Welcome</p>
 			<?php
 				
-				
-				$stmt = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
+				$stmt = $db->prepare('SELECT * FROM users WHERE username=:name');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
+					echo '<p id = "name">';
+					echo ' Logged in as: '$rows['firstname'] . ' ' . $rows['lastname']; 
+					echo '</p>';
+				}
+				
+				foreach ($db->query('SELECT username, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM users ORDER BY date') as $rows)
+				{
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
-					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+					echo 'Username: ' . $rows['username'] . '<br>' . $rows['firstname'] . ' ' . $rows['lastname'] . '<br> Member since: ' . $rows['date']; 
 					echo '</div>';
 					echo '<br>';
 				}

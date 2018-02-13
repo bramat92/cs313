@@ -3,7 +3,7 @@
 	if(isset($_SESSION['uname'])) {
 		$variable = $_SESSION['uname'];		
 	}
-	echo $variable;
+	
 	try
 		{
 			$user = 'auobnrfenbtijr';
@@ -71,25 +71,29 @@
 		<p id="friendstagram">Friendstagram</p>
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<a class="navbar-brand" href="#">FG</a>
+				<a class="navbar-brand" href="fglogin.php">FG</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
+						<li class="nav-item">
 							<a class="nav-link" href="fghome.php">Home <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="fgposts.php">Posts</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active">
 							<a class="nav-link" href="followees.php">Followers</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="fgfollowing.php">Following</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="fgusers.php">Users</a>
+						</li>
+
 						
 
 						
