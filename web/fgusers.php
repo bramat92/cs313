@@ -105,7 +105,7 @@
 						</form>
 					</div>
 				</nav>
-				<p id = "welcome">Welcome</p>
+				<p id = "welcome">All Users</p>
 				<?php
 					
 					$stmt = $db->prepare('SELECT * FROM users WHERE username=:name');
@@ -114,14 +114,15 @@
 					foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 					{
 						echo '<p id = "name">';
-						echo $rows['firstname'] . ' ' . $rows['lastname']; 
+						echo 'Hi ' . $rows['firstname'] . ' ' . $rows['lastname']; 
 						echo '</p>';
 					}
 					
 					foreach ($db->query('SELECT * FROM users') as $rows)
 					{
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-						echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+						echo 'Username: ' . $rows['username'] . '<br>' . $rows['firstname'] . ' ' . 
+						$rows['lastname'] . '<br> Member since: ' . $rows['to_char(posts.created_at, \'YYYY/MM/DD\')']; 
 						echo '</div>';
 						echo '<br>';
 					}
