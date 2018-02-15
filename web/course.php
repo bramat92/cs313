@@ -11,7 +11,10 @@
 		die();
 	}
 	
-	
+	$query = "SELECT name, number FROM course";
+	$stmt = $db->prepare($query);
+	$stmt->execute();
+	$courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
 	
 ?>
@@ -25,7 +28,7 @@
 		<h1>Courses</h1
 		<ul>
 			<?php
-				foreach ($db->query('SELECT name, number FROM course') as $row)
+				foreach ($courses as $row)
 				{
 				
 					echo '<li><p>' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
