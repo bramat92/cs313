@@ -33,10 +33,8 @@
 					$id = $row['id'];
 					$name = $row['name'];
 					$number = $row['number'];
-					echo $id;
-					echo "<li><p> $name - $number </p></li>";
-					echo '<li><p><a href="notes.php?course_id=$id"> $name - ' . $row['number'] . '</a></p></li>';
-				
+					echo "<li><p><a href='notes.php?course_id="$id"'> $name - $number </a></p></li>";
+									
 				}
 			?>
 		</ul>
