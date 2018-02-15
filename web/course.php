@@ -30,8 +30,8 @@
 			<?php
 				foreach ($courses as $row)
 				{
-				
-					echo '<li><p>' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
+					
+					echo '<li><p><a href="views.php">' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
 				
 				}
 			?>
