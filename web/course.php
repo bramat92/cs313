@@ -31,6 +31,7 @@
 				foreach ($courses as $row)
 				{
 					$id = $row['id'];
+					echo $id;
 					echo '<li><p><a href="notes.php?course_id=id">' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
 				
 				}
