@@ -11,8 +11,10 @@
 		die();
 	}
 	
-	$query = "SELECT name, number FROM course";
+	$course_id = htmlspecialchars($_GET['course_id']);
+	$query = "SELECT id, name, number FROM course WHERE id =:course_id";
 	$stmt = $db->prepare($query);
+	$stmt->bindValue(":course_id", $course_id, PDO::PARAM_INT);
 	$stmt->execute();
 	$courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
@@ -30,8 +32,9 @@
 			<?php
 				foreach ($courses as $row)
 				{
-					$id = $row['id'];
-					echo '<li><p><a href="views.php?course_id=id">' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
+					$number = $row['number'];
+					$name = $row['name'];	
+					echo "<h1>Notes for $number - $name</h1>";
 				
 				}
 			?>
