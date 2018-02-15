@@ -11,7 +11,7 @@
 		die();
 	}
 	
-	$query = "SELECT name, number FROM course";
+	$query = "SELECT id, name, number FROM course";
 	$stmt = $db->prepare($query);
 	$stmt->execute();
 	$courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -32,7 +32,7 @@
 				{
 					$id = $row['id'];
 					echo $id;
-					echo '<li><p><a href="notes.php?course_id=id">' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
+					echo '<li><p><a href="notes.php?course_id=$id">' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
 				
 				}
 			?>
