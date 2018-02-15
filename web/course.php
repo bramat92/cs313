@@ -11,6 +11,7 @@
 		die();
 	}
 	
+	
 		
 	
 ?>
@@ -24,7 +25,7 @@
 		<h1>Courses</h1
 		<ul>
 			<?php
-				foreach ($db->query('SELECT name, number FROM scripture') as $row)
+				foreach ($db->query('SELECT name, number FROM course') as $row)
 				{
 				
 					echo '<li><p>' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
