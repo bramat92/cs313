@@ -27,7 +27,7 @@
 				foreach ($db->query('SELECT name, number FROM scripture') as $row)
 				{
 				
-					echo "<li><p><a href=''>' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>";
+					echo '<li><p>' . $row['name'] . ' - ' . $row['number'] . '</a></p></li>';
 				
 				}
 			?>
