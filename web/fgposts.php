@@ -126,7 +126,7 @@
 					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 					echo '
 						<form action="fgposts.php" method="get">
-							<input type="hidden" name="id" value="'.$id.'">
+							<input type="hidden" name="id" value="'.$ids.'">
 							<button type="submit" name="button" class="btn btn-primary">Delete</button>
 						</form>';
 					echo '</div>';
