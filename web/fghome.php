@@ -75,7 +75,15 @@
 			.form-group {
 				background-color: #bac3d3;
 				padding: 20px;
-				width: 500px;
+				width: 700px;
+				border-radius: 10px;
+				opacity: 0.7;
+			}
+			#postText {
+				margin-bottom: 15px;
+			}
+			#postButton {
+				
 			}
 		</style>
 	</head>
@@ -131,7 +139,7 @@
 			
 			<form>
 				<div class="form-group">
-					<input type="text" class="form-control" id="postText"  placeholder="What's on your mind">
+					<textarea class="form-control" id="postText" rows="2"></textarea>
 					<button type="submit" id="postButton" class="btn btn-primary">Post</button>
 				</div>
 				
