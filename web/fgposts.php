@@ -18,6 +18,7 @@
 		}
 		if (isset($_GET['button'])){
 			$deleteid = $_GET['id'];
+			echo $deleteid;
 			$pid = $db->prepare('DELETE FROM posts WHERE id =:idn');
 			$ptext->bindValue(':idn', $deleteid, PDO::PARAM_INT);
 			$ptext->execute();
@@ -121,6 +122,7 @@
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
 					$ids = $rows['posts.id'];
+					echo $ids;
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
 					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
