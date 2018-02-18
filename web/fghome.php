@@ -51,9 +51,8 @@
 			}
 			
 			#welcome {
-				text-align: center;
 				margin-top: 20px;
-				font-size: 50px;
+				font-size: 30px;
 				
 			}
 			#friendstagram {
@@ -72,6 +71,11 @@
 				margin-bottom: 10px;
 				width: 700px;
 				display: inline-block;
+			}
+			.form-group {
+				background-color: #bac3d3;
+				padding: 20px;
+				width: 500px;
 			}
 		</style>
 	</head>
@@ -110,7 +114,7 @@
 					</form>
 				</div>
 			</nav>
-			<p id = "welcome">Welcome</p>
+			<p id = "welcome">Welcome:</p>
 			<?php
 				
 				$stmt = $db->prepare('SELECT * FROM users WHERE username=:name');
@@ -122,6 +126,18 @@
 					echo $rows['firstname'] . ' ' . $rows['lastname']; 
 					echo '</p>';
 				}
+				
+			?>
+			
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control" id="postText"  placeholder="What's on your mind">
+					<button type="submit" id="postButton" class="btn btn-primary">Post</button>
+				</div>
+				
+			</form>
+			
+			<?php	
 				
 				foreach ($db->query('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id ORDER BY date DESC') as $rows)
 				{
