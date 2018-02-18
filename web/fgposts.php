@@ -16,12 +16,12 @@
 			echo 'Error!: ' . $ex->getMessage();
 			die();
 		}
-//		if (isset($_GET['button'])){
-//			$deleteid = $_GET['id'];
-//			$pid = $db->prepare('DELETE FROM posts WHERE id =:idn');
-//			$ptext->bindValue(':idn', $deleteid, PDO::PARAM_INT);
-//			$ptext->execute();
-//		}
+		if (isset($_GET['button'])){
+			$deleteid = $_GET['id'];
+			$pid = $db->prepare('DELETE FROM posts WHERE id =:idn');
+			$ptext->bindValue(':idn', $deleteid, PDO::PARAM_INT);
+			$ptext->execute();
+		}
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +120,7 @@
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
-					$id = $rows['posts.id'];
+					$ids = $rows['posts.id'];
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
 					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
@@ -128,7 +128,7 @@
 						<form action="fgposts.php" method="get">
 							<input type="hidden" name="id" value="'.$id.'">
 							<button type="submit" name="button" class="btn btn-primary">Delete</button>
-						</form>'
+						</form>';
 					echo '</div>';
 					echo '<br>';
 				}
