@@ -19,6 +19,25 @@
 			echo 'Error!: ' . $ex->getMessage();
 			die();
 		}
+		
+		$stmid = $db->prepare('SELECT id FROM users WHERE username=:name');
+		$stmid->bindValue(':name', $variable, PDO::PARAM_STR);
+		$stmid->execute();	
+		$idnumber = $stmid->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($idnumber as $values)
+		{
+			$id = $values['id'];
+		}
+
+		
+		
+		if (isset($_GET['button'])){
+			$text = $_GET['postText'];
+			$ptext = $db->prepare('INSERT INTO posts (post, user_id, created_at) VALUES (:posts, :id)');
+			$ptext->bindValue(':posts', $text, PDO::PARAM_STR);
+			$ptext->bindValue(':id', $id, PDO::PARAM_INT);
+			$ptext->execute();
+		}
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +141,7 @@
 					</form>
 				</div>
 			</nav>
-			<p id = "welcome">Welcome:</p>
+			
 			<?php
 				
 				$stmt = $db->prepare('SELECT * FROM users WHERE username=:name');
@@ -130,17 +149,18 @@
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
-					echo '<p id = "name">';
+					$id = $rows['id'];
+					echo '<p id = "name">Welcome: ';
 					echo $rows['firstname'] . ' ' . $rows['lastname']; 
 					echo '</p>';
 				}
 				
 			?>
 			
-			<form>
+			<form action="fghome.php" method="GET">
 				<div class="form-group">
-					<textarea class="form-control" id="postText" rows="2"></textarea>
-					<button type="submit" id="postButton" class="btn btn-primary">Post</button>
+					<textarea class="form-control" name="postText" id="postText" rows="2"></textarea>
+					<button type="submit" name="button" id="postButton" class="btn btn-primary">Post</button>
 				</div>
 				
 			</form>
