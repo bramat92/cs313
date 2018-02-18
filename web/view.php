@@ -28,8 +28,8 @@
 			$stmt->bindValue(':content', $content, PDO::PARAM_STR);
 			$stmt->execute();	
 			
-		$newId = $pdo->lastInsertId('scripture_id_seq');
-		echo $newid;
+//		$newId = $pdo->lastInsertId('scripture_id_seq');
+//		echo $newid;
 //		$td = $db->prepare('SELECT id FROM topic WHERE name = :tpname');
 //		$td->bindValue(':tpname', $topicname, PDO::PARAM_STR);
 //		$td->execute();
