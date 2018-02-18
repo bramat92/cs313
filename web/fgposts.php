@@ -16,12 +16,12 @@
 			echo 'Error!: ' . $ex->getMessage();
 			die();
 		}
-		if (isset($_GET['button'])){
-			$deleteid = $_GET['id'];
-			$pid = $db->prepare('DELETE FROM posts WHERE id =:idn');
-			$ptext->bindValue(':idn', $deleteid, PDO::PARAM_INT);
-			$ptext->execute();
-		}
+//		if (isset($_GET['button'])){
+//			$deleteid = $_GET['id'];
+//			$pid = $db->prepare('DELETE FROM posts WHERE id =:idn');
+//			$ptext->bindValue(':idn', $deleteid, PDO::PARAM_INT);
+//			$ptext->execute();
+//		}
 ?>
 
 <!DOCTYPE html>
