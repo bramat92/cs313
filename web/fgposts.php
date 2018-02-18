@@ -16,6 +16,12 @@
 			echo 'Error!: ' . $ex->getMessage();
 			die();
 		}
+		if (isset($_GET['button'])){
+			$deleteid = $_GET['id'];
+			$pid = $db->prepare('DELETE FROM posts WHERE id =:idn');
+			$ptext->bindValue(':idn', $deleteid, PDO::PARAM_INT);
+			$ptext->execute();
+		}
 ?>
 
 <!DOCTYPE html>
@@ -109,14 +115,20 @@
 			<?php
 				
 				
-				$stmt = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
+				$stmt = $db->prepare('SELECT posts.id, post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN posts ON users.id = posts.user_id WHERE users.id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
+					$id = $rows['posts.id'];
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
 					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+					echo '
+						<form action="fgposts.php" method="get">
+							<input type="hidden" name="id" value="'.$id.'">
+							<button type="submit" name="button" class="btn btn-primary">Delete</button>
+						</form>'
 					echo '</div>';
 					echo '<br>';
 				}

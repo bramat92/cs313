@@ -159,7 +159,7 @@
 			
 			<form action="fghome.php" method="GET">
 				<div class="form-group">
-					<textarea class="form-control" name="postText" id="postText" rows="2"></textarea>
+					<textarea class="form-control" name="postText" id="postText" rows="2" placeholder="What's on your mind..."></textarea>
 					<button type="submit" name="button" id="postButton" class="btn btn-primary">Post</button>
 				</div>
 				
