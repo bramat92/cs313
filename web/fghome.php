@@ -33,7 +33,7 @@
 		
 		if (isset($_GET['button'])){
 			$text = $_GET['postText'];
-			$ptext = $db->prepare('INSERT INTO posts (post, user_id, created_at) VALUES (:posts, :id)');
+			$ptext = $db->prepare('INSERT INTO posts (post, user_id) VALUES (:posts, :id)');
 			$ptext->bindValue(':posts', $text, PDO::PARAM_STR);
 			$ptext->bindValue(':id', $id, PDO::PARAM_INT);
 			$ptext->execute();
