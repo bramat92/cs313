@@ -104,13 +104,16 @@
 			#postButton {
 				
 			}
+			#logOut {
+				margin-left: 25px;
+			}
 		</style>
 	</head>
 	<body>
 		<p id="friendstagram">Friendstagram</p>
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<a class="navbar-brand" href="fglogin.php">FG</a>
+				<a class="navbar-brand" href="fghome.php">FG</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -139,6 +142,7 @@
 						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 					</form>
+					<a class="btn btn-primary" id="logOut" href="fglogin.php" role="button">Log Out</a>
 				</div>
 			</nav>
 			
