@@ -122,14 +122,13 @@
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
-					 echo $rows['ids'];
-					echo 'Am here';
+					 
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
 					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 					echo '
 						<form action="fgposts.php" method="get">
-							<input type="hidden" name="id" value="'.$ids.'">
+							<input type="hidden" name="id" value="'. $rows['ids'] .'">
 							<button type="submit" name="button" class="btn btn-primary">Delete</button>
 						</form>';
 					echo '</div>';
