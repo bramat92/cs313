@@ -18,7 +18,6 @@
 		}
 		if (isset($_GET['button'])){
 			$deleteid = $_GET['id'];
-			echo $deleteid;
 			$pid = $db->prepare('DELETE FROM posts WHERE id=:idn');
 			$pid->bindValue(':idn', $deleteid, PDO::PARAM_INT);
 			$pid->execute();
