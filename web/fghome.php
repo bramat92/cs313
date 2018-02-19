@@ -5,7 +5,10 @@
 	
 	if(isset($_SESSION['uname'])) {
 		$variable = $_SESSION['uname'];		
-	} 
+	} else {
+		$_SESSION["uname"] = $_GET["username"];	
+		$variable = $_SESSION['uname'];		
+	}
 	
 	try
 		{
