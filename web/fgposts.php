@@ -122,7 +122,7 @@
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
-					$ids = $rows['posts.id'];
+					 echo $rows['posts.id'];
 					echo $ids;
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
