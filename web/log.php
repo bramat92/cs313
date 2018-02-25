@@ -63,7 +63,7 @@
 		<div class="container">
 		<div id="error"><?php echo $error; ?></div>
 			<h2>Log In</h2>
-			<form action="fghome.php" method="GET">
+			<form action="" method="POST">
 <!-- 				<div class="form-group"> -->
 <!-- 					<label for="username">Please enter your username</label> -->
 <!-- 					<input type="text" name="username" class="form-control" id="username" placeholder="Enter username"> -->
