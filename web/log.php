@@ -7,11 +7,11 @@
 	if (array_key_exists("submit", $_POST)) {
 		$error = "";
 		if (!$_POST['email']) {
-			$error .= "An email is required";
+			$error .= "<p>An email is required</p>";
 		}
 		
 		if (!$_POST['pword']) {
-			$error .= "A password is required";
+			$error .= "<p>A password is required</p>";
 		}
 		
 		if ($error != "") {
