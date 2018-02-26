@@ -118,8 +118,7 @@
 					$statement = $db->prepare($query);
 					$statement->bindValue(':username', $username);
 					$statement->execute();
-					$results = $statement->fetchAll(PDO::FETCH_ASSOC);
-					foreach ($results as $rows) {
+					foreach($statement->fetchAll(PDO::FETCH_ASSOC)) {
 						echo $rows['id'];
 					if ($rows['username'] == $username) {
 						echo "Am here";
