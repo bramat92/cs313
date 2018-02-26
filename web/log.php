@@ -78,7 +78,7 @@
 				if (!$ptext->execute()) {
 					$error = "<p>Could not sign you up - please try again</p>";
 				} else {
-					foreach ($db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1') as $vl) {6
+					foreach ($db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1') as $vl) {
 						$salt = $vl['id'];
 						$upwd = md5(md5($salt).$pword);
 						$hp = $db->prepare('UPDATE users SET password =:upwd WHERE id =:nid');
