@@ -87,6 +87,9 @@
 				}
 
 			}
+		  } else {
+			echo "Logging in...";
+		}
 		} 
 	}
 ?>
