@@ -120,6 +120,7 @@
 					$statement->execute();
 					$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 					foreach ($results as $rows) {
+						echo $rows['id'];
 					if ($rows['username'] == $username) {
 						echo "Am here";
 						echo "Username entered: ".$username;
