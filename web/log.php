@@ -87,9 +87,7 @@
 				}
 
 			}
-		} else {
-						echo "Logging in..";
-		}
+		} 
 	}
 ?>
 
