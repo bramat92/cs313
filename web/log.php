@@ -1,6 +1,16 @@
 <?php
 
 	session_start();
+	if (isset($_SESSION['uname'])) {
+			unset($_SESSION['uname']);
+	}
+	
+	if (isset($_COOKIE['uname'])) {
+		setcookie("uname", "", time() - 60*60);
+		$_COOKIE['uname'] = "";
+	
+	}
+	
 	
 	if (array_key_exists("submit", $_POST)) {
 		try
