@@ -107,6 +107,8 @@
 						
 						header("Location: fghome.php");
 					}
+				} else {
+					echo "<p>That login combination could not be found</p>";
 				}
 			}	
 		}
