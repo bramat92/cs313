@@ -1,10 +1,20 @@
 <?php
-//	session_start();
-//	if (isset($_SESSION['uname'])) {
-//		unset($_SESSION['uname']);
-//	}
-	
 	if (array_key_exists("submit", $_POST)) {
+		try
+		{
+			$user = 'auobnrfenbtijr';
+			$password = 'd88bd9049162b1341d8970fe4ebeeae2542aade94453e76f3e73460cfbfa424c';
+			$db = new PDO('pgsql:host=ec2-54-225-103-255.compute-1.amazonaws.com;dbname=d4sni6bgp10g1t', $user, $password);
+		}
+		catch (PDOException $ex)
+		{
+			echo 'Error!: ' . $ex->getMessage();
+			die();
+		}
+		
+		
+			
+	
 		$error = "";
 		if (!$_POST['email']) {
 			$error .= "<p>An email is required</p>";
@@ -13,9 +23,37 @@
 		if (!$_POST['pword']) {
 			$error .= "<p>A password is required</p>";
 		}
-		
+		$username = $_POST['username'];
+		$firstname = $_POST['firstname'];
+		$lastname = $_POST['lastname'];
+		$email = $_POST['email'];
+		$pword = $_POST['pword'];
 		if ($error != "") {
 			$error = "<p>There were error(s) in your form:</p>".$error;
+		} else {
+			$query = "SELECT id FROM user WHERE email =:em";
+			$statement = $db->prepare($query);
+			$statement->bindValue(':username', $email);
+			$statement->execute();
+			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+			
+			if (pg_num_rows($result) > 0) {
+				$error = "That email address is taken.";
+			} else {
+				$ptext = $db->prepare('INSERT INTO users (username, firstname, lastname, email, password) VALUES (:username, :firstname, :lastname, :email, :password)');
+				$ptext->bindValue(':username', $username, PDO::PARAM_STR);
+				$ptext->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+				$ptext->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+				$ptext->bindValue(':email', $email, PDO::PARAM_STR);
+				$ptext->bindValue(':password', $pword, PDO::PARAM_STR);
+				
+				if (!$ptext->execute()) {
+					$error = "<p>Could not sign you up - please try again</p>";
+				} else {
+					echo "Sign up successful";
+				}
+
+			}
 		}
 	}
 ?>
@@ -64,26 +102,29 @@
 		<div id="error"><?php echo $error; ?></div>
 			<h2>Log In</h2>
 			<form action="" method="POST">
-<!-- 				<div class="form-group"> -->
-<!-- 					<label for="username">Please enter your username</label> -->
-<!-- 					<input type="text" name="username" class="form-control" id="username" placeholder="Enter username"> -->
-<!-- 					<label for="user">Please enter your username</label> -->
-<!-- 					<input type="text" name="username" class="form-control" id="username" placeholder="Enter username"> -->
-<!-- 				</div> -->
 				<div class="form-group">
-<!-- 						<label for="email">Email address</label> -->
+					<input type="text" name="username" class="form-control" id="username" placeholder="Username">
+					
+				</div>
+				<div class="form-group">
+					<input type="text" name="firstname" class="form-control" id="firstname" placeholder="Firstname">
+				</div>
+				<div class="form-group">
+					<input type="text" name="lastname" class="form-control" id="lastname" placeholder="Lastname">
+				</div>
+
+				<div class="form-group">
 						<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
 						<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 					</div>
 					<div class="form-group">
-<!-- 						<label for="pword">Password</label> -->
 						<input type="password" class="form-control" id="pword" name="pword" placeholder="Password">
 					</div>
 					<div class="form-check">
 						<input type="checkbox" class="form-check-input" name="stayLoggedIn" id="stay">
 						<label class="form-check-label" for="stay">Stay logged in</label>
 					</div>
-				<button type="submit" name="submit" class="btn btn-primary">Log In</button>
+				<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
 			</form>
 		</div>
 
