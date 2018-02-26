@@ -185,6 +185,21 @@
 				background-size: cover;
 
 			}
+			#signUpForm {
+				display: none;
+			}
+			#showsignupform, #showloginform {
+				margin-top: 5px;
+				cursor: pointer;
+			}
+			#showsignupform:hover, #showloginform:hover {
+				text-decoration: underline;
+			}
+			#btn {
+				margin-bottom: 15px;
+				cursor: pointer;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -192,7 +207,7 @@
 		<div class="container">
 		<div id="error"><?php echo $error; ?></div>
 			<h2>Log In</h2>
-			<form action="" method="POST">
+			<form action="" method="POST" id="signUpForm">
 				<div class="form-group">
 					<input type="text" name="username" class="form-control" id="username" placeholder="Username">
 					
@@ -220,15 +235,11 @@
 						</div>
 					
 				<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+				<p><a id="showloginform">Login<a></p>
 			</form>
 			
 			
-			</div>
-			<div class="container">
-			<div id="error"><?php echo $error; ?></div>
-				<h2>Log In</h2>
-
-			<form action="" method="POST">
+			<form action="" method="POST" id="loginForm">
 				<div class="form-group">
 					<input type="text" name="username" class="form-control" id="username" placeholder="Username">
 					
@@ -245,14 +256,23 @@
 				</div>
 
 					
-				<button type="submit" name="submit" class="btn btn-primary">Login</button>
+				<button type="submit" name="submit" id="btn" class="btn btn-primary">Login</button>
+				<p><a id="showsignupform">Sign Up<a></p>
 			</form>
 		</div>
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			$("#showsignupform").click(function () {
+				$("#loginForm").toggle();
+				$("#signUpForm").toggle();
+				
+			});
+		</script>
 	</body>
 </html>
