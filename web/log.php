@@ -25,7 +25,7 @@
 			die();
 		}
 		
-		
+		echo $_POST['signUp'];
 			
 	
 		$error = "";
@@ -88,7 +88,7 @@
 
 			}
 		  } 
-		}
+		
 		else if ($_POST['signUp'] == '0') {
 			echo "I am hereeeeeee....";
 			$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
@@ -115,6 +115,7 @@
 				}
 			}	
 		}
+	}
 		 
 	}
 ?>
