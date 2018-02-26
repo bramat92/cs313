@@ -94,7 +94,43 @@
 		
 		
 	}
-}		 
+	} 
+	if (!$_POST['email']) {
+		$error .= "<p>An email is required</p>";
+	}
+	
+	if (!$_POST['pword']) {
+		$error .= "<p>A password is required</p>";
+	}
+	
+	if ($error != "") {
+		$error = "<p>There were error(s) in your form:</p>".$error;
+	} else {
+		echo "I am hereeeeeee....";
+		$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
+		$stmt->bindValue(':name', $email, PDO::PARAM_STR);
+		$stmt->execute();
+		foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
+		{
+			$id = $rows['id'];
+			if (array_key_exists("id", $rows)) {
+				$hpwd = md5(md5($rows['id']).$pword);
+				if ($hpwd == $rows['password']) {
+					$_SESSION['uname'] = $rows['username'];
+					
+					if ($_POST['stay'] == 1) {
+						setcookie("uname", $rows['username'], time() + 60 * 60 * 365);
+						
+					}
+					
+					header("Location: fghome.php");
+					echo "Login successful";
+				}
+			} else {
+				echo "<p>That login combination could not be found</p>";
+			}
+		}	
+	}		 
 	}
 ?>
 
