@@ -115,10 +115,10 @@
 					$error = "<p>There were error(s) in your form:</p>".$error;
 				} else {
 					$stmt = $db->prepare('SELECT * FROM users WHERE username=:name');
-					$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
+					$stmt->bindValue(':name', $username, PDO::PARAM_STR);
 					$stmt->execute();
-					foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
-					{						echo $rows['id'];
+					foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows) {
+						echo $rows['id'];
 					if ($rows['username'] == $username) {
 						echo "Am here";
 						echo "Username entered: ".$username;
