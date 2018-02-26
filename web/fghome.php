@@ -2,7 +2,7 @@
 	session_start();
 	
 	if (isset($_COOKIE['uname'])) {
-		$_SESSION['uname'] = $_COOKIE['uname']
+		$_SESSION['uname'] = $_COOKIE['uname'];
 	}
 	
 	if(isset($_SESSION['uname'])) {
