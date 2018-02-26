@@ -106,6 +106,7 @@
 						}
 						
 						header("Location: fghome.php");
+						echo "Login successful";
 					}
 				} else {
 					echo "<p>That login combination could not be found</p>";
@@ -192,6 +193,9 @@
 			
 			</div>
 			<div class="container">
+			<div id="error"><?php echo $error; ?></div>
+				<h2>Log In</h2>
+
 			<form action="" method="POST">
 				<div class="form-group">
 					<input type="text" name="username" class="form-control" id="username" placeholder="Username">
