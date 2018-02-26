@@ -120,13 +120,21 @@
 					$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 					foreach ($results as $rows) {
 					if ($rows['username'] == $username) {
+						echo "Am here";
+						echo "Username entered: ".$username;
+						echo "Username from dtb: ".$rows['username'];
 						$hpwd = md5(md5($rows['id']).$pword);
+						echo "Password entered: ".$hpwd;
+						echo "Password from dtb: ".$password;
 						if ($hpwd == $rows['password']) {
 							$_SESSION['uname'] = $rows['username'];		
+							echo "Session name: ".$_SESSION['uname'];
 							if ($_POST['stay'] == 1) {
 									setcookie("uname", $rows['username'], time() + 60 * 60 * 365);		
+									echo "Cookie name: ".$_COOKIE['uname'];
 							}
 							header("Location: fghome.php");
+							echo "Am here!";
 							echo "Login successful";
 						} else {
 							echo "<p>That login combination could not be found</p>";
