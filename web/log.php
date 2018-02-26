@@ -61,7 +61,7 @@
 		} else {
 			$query = "SELECT id FROM user WHERE email =:em";
 			$statement = $db->prepare($query);
-			$statement->bindValue(':username', $email);
+			$statement->bindValue(':username', $email, PDO::PARAM_STR);
 			$statement->execute();
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 			
@@ -116,7 +116,7 @@
 				} else {
 					$query = "SELECT id, username, password FROM user WHERE username =:em";
 					$statement = $db->prepare($query);
-					$statement->bindValue(':username', $username);
+					$statement->bindValue(':username', $username, PDO::PARAM_STR);
 					$statement->execute();
 					foreach($statement->fetchAll(PDO::FETCH_ASSOC) as $rows) {
 						echo $rows['id'];
