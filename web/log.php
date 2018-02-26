@@ -88,6 +88,7 @@
 
 			}
 		  } else if ($_POST['signUp'] == '0') {
+			echo "I am hereeeeeee....";
 			$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
 			$stmt->bindValue(':name', $email, PDO::PARAM_STR);
 			$stmt->execute();
@@ -98,6 +99,7 @@
 					$hpwd = md5(md5($rows['id']).$pword);
 					if ($hpwd == $rows['password']) {
 						$_SESSION['uname'] = $rows['username'];
+						
 						if ($_POST['stay'] == 1) {
 							setcookie("uname", $rows['username'], time() + 60 * 60 * 365);
 							
