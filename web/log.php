@@ -11,25 +11,28 @@
 	
 	}
 	
+	try
+	{
+		$user = 'auobnrfenbtijr';
+		$password = 'd88bd9049162b1341d8970fe4ebeeae2542aade94453e76f3e73460cfbfa424c';
+		$db = new PDO('pgsql:host=ec2-54-225-103-255.compute-1.amazonaws.com;dbname=d4sni6bgp10g1t', $user, $password);
+	}
+	catch (PDOException $ex)
+	{
+		echo 'Error!: ' . $ex->getMessage();
+		die();
+	}
+
+	
 	
 	if (array_key_exists("submit", $_POST)) {
-		try
-		{
-			$user = 'auobnrfenbtijr';
-			$password = 'd88bd9049162b1341d8970fe4ebeeae2542aade94453e76f3e73460cfbfa424c';
-			$db = new PDO('pgsql:host=ec2-54-225-103-255.compute-1.amazonaws.com;dbname=d4sni6bgp10g1t', $user, $password);
-		}
-		catch (PDOException $ex)
-		{
-			echo 'Error!: ' . $ex->getMessage();
-			die();
-		}
-		
+				
 		echo $_POST['signUp'];
 			
 	
 		$error = "";
 		
+		if ($_POST['signUp'] == '1') {
 		if (!$_POST['email']) {
 			$error .= "<p>An email is required</p>";
 		}
@@ -46,7 +49,7 @@
 		if ($error != "") {
 			$error = "<p>There were error(s) in your form:</p>".$error;
 		} else {
-			if ($_POST['signUp'] == '1') {
+			
 			$query = "SELECT id FROM user WHERE email =:em";
 			$statement = $db->prepare($query);
 			$statement->bindValue(':username', $email);
@@ -87,37 +90,12 @@
 				}
 
 			}
-		  } 
+		   
 		
-		else if ($_POST['signUp'] == '0') {
-			echo "I am hereeeeeee....";
-			$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
-			$stmt->bindValue(':name', $email, PDO::PARAM_STR);
-			$stmt->execute();
-			foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
-			{
-				$id = $rows['id'];
-				if (array_key_exists("id", $rows)) {
-					$hpwd = md5(md5($rows['id']).$pword);
-					if ($hpwd == $rows['password']) {
-						$_SESSION['uname'] = $rows['username'];
-						
-						if ($_POST['stay'] == 1) {
-							setcookie("uname", $rows['username'], time() + 60 * 60 * 365);
-							
-						}
-						
-						header("Location: fghome.php");
-						echo "Login successful";
-					}
-				} else {
-					echo "<p>That login combination could not be found</p>";
-				}
-			}	
-		}
+		
 	}
-		 
-
+}		 
+	}
 ?>
 
 <!DOCTYPE html>
