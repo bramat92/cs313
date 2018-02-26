@@ -102,6 +102,7 @@
 		  } 
 		}
 		else {
+				echo "Am here at the start of Login";
 				$username = $_POST['username'];
 				$pword = $_POST['pword'];
 				if (!$_POST['username']) {
