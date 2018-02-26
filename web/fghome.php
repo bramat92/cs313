@@ -1,13 +1,17 @@
 <?php
 	session_start();
 	
+	if (isset($_COOKIE['uname'])) {
+		$_SESSION['uname'] = $_COOKIE['uname']
+	}
+	
 	if(isset($_SESSION['uname'])) {
 		$variable = $_SESSION['uname'];		
 	} else {
-		$_SESSION["uname"] = $_GET["username"];	
-		$variable = $_SESSION['uname'];		
+		header("Location: log.php");
 	}
 	
+		
 	try
 		{
 			$user = 'auobnrfenbtijr';

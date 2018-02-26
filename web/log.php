@@ -1,4 +1,7 @@
 <?php
+
+	session_start();
+	
 	if (array_key_exists("submit", $_POST)) {
 		try
 		{
@@ -16,6 +19,7 @@
 			
 	
 		$error = "";
+		
 		if (!$_POST['email']) {
 			$error .= "<p>An email is required</p>";
 		}
@@ -39,7 +43,7 @@
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 			
 			if (pg_num_rows($result) > 0) {
-				$error = "That email address is taken.";
+				$error = "<p>That email address is taken.</p>";
 			} else {
 				$ptext = $db->prepare('INSERT INTO users (username, firstname, lastname, email, password) VALUES (:username, :firstname, :lastname, :email, :password)');
 				$ptext->bindValue(':username', $username, PDO::PARAM_STR);
@@ -60,7 +64,15 @@
 						$hp->execute();
 					}
 					
-					echo "Sign up successful";
+					$_SESSION['uname'] = $username;
+					
+					if ($_POST['stay'] == 1) {
+						setcookie("uname", $username, time() + 60 * 60 * 365);
+						
+					}
+					
+					header("Location: fghome.php");
+//					echo "Sign up successful";
 				}
 
 			}
@@ -131,9 +143,10 @@
 						<input type="password" class="form-control" id="pword" name="pword" placeholder="Password">
 					</div>
 					<div class="form-check">
-						<input type="checkbox" class="form-check-input" name="stayLoggedIn" id="stay">
-						<label class="form-check-label" for="stay">Stay logged in</label>
-					</div>
+							<input type="checkbox" class="form-check-input" id="stay" name="stay" value="1">
+							<label class="form-check-label" for="stay">Stay logged in</label>
+						</div>
+					
 				<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
 			</form>
 		</div>

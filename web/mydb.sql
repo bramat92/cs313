@@ -1,11 +1,16 @@
 DROP TABLE if exists users, posts, comments, likes, follows, tags, posts_tags;
+
+
 CREATE TABLE users (
 		id SERIAL NOT NULL PRIMARY KEY,
 		username VARCHAR(255) UNIQUE NOT NULL,
 		firstname VARCHAR(255) NOT NULL,
 		lastname VARCHAR(255) NOT NULL,
+		email VARCHAR(255) UNIQUE NOT NULL,
+		password TEXT NOT NULL,
 		created_at TIMESTAMP DEFAULT NOW()
 );
+
 
 CREATE TABLE posts (
 		id SERIAL NOT NULL PRIMARY KEY,
@@ -57,17 +62,17 @@ CREATE TABLE posts_tags (
 		PRIMARY KEY(post_id, tag_id)
 );
 
-INSERT INTO users (username, firstname, lastname, created_at) VALUES 
-('bernie', 'Ben', 'Paul', '2017-02-16 18:22:10.846'), 
-('kevin', 'Kevin', 'James', '2017-04-02 17:11:21.417'), 
-('johnd', 'John', 'Doe', '2017-02-21 11:12:32.574'), 
-('suet', 'Sue', 'Carl', '2016-08-13 01:28:43.085'), 
-('domy', 'Dominic', 'Purcell', '2016-12-07 01:04:39.298'), 
-('katl', 'Kathy', 'Lyon', '2017-04-30 13:26:14.496'), 
-('sandy', 'Sally', 'Andy', '2016-12-12 06:50:07.996'), 
-('harryp', 'Harry', 'Potter', '2016-08-20 02:19:45.512'), 
-('ginw', 'Gin', 'Weasel', '2016-06-24 19:36:30.978'), 
-('gavins', 'Gavin', 'Sanchez', '2016-08-07 16:25:48.561');
+INSERT INTO users (username, firstname, lastname, email, password, created_at) VALUES 
+('bernie', 'Ben', 'Paul', 'bernie@gmail.com', 'bernie123', '2017-02-16 18:22:10.846'), 
+('kevin', 'Kevin', 'James', 'kevin@gmail.com', 'kevin123', '2017-04-02 17:11:21.417'), 
+('johnd', 'John', 'Doe', 'johnd@gmail.com', 'johnd123', '2017-02-21 11:12:32.574'), 
+('suet', 'Sue', 'Carl', 'suet@gmail.com', 'suet123', '2016-08-13 01:28:43.085'), 
+('domy', 'Dominic', 'Purcell', 'domy@gmail.com', 'domy123', '2016-12-07 01:04:39.298'), 
+('katl', 'Kathy', 'Lyon', 'katl@gmail.com', 'katl123', '2017-04-30 13:26:14.496'), 
+('sandy', 'Sally', 'Andy', 'sandy@gmail.com', 'sandy123', '2016-12-12 06:50:07.996'), 
+('harryp', 'Harry', 'Potter', 'harryp@gmail.com', 'harry123', '2016-08-20 02:19:45.512'), 
+('ginw', 'Gin', 'Weasel', 'ginw@gmail.com', 'ginw123', '2016-06-24 19:36:30.978'), 
+('gavins', 'Gavin', 'Sanchez', 'gavins@gmail.com', 'gavins123', '2016-08-07 16:25:48.561');
 
 INSERT INTO posts (post, user_id, created_at) VALUES
 ('Only I can change my life. No one can do it for me.', 1, '2017-02-16 18:22:10.846'),
