@@ -87,7 +87,9 @@
 				}
 
 			}
-		  } else if ($_POST['signUp'] == '0') {
+		  } 
+		}
+		else if ($_POST['signUp'] == '0') {
 			echo "I am hereeeeeee....";
 			$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
 			$stmt->bindValue(':name', $email, PDO::PARAM_STR);
@@ -113,7 +115,7 @@
 				}
 			}	
 		}
-		} 
+		 
 	}
 ?>
 
