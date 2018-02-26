@@ -102,6 +102,7 @@
 		  } 
 		}
 		else {
+				$username = $_POST['username'];
 				if (!$_POST['username']) {
 					$error .= "<p>A username is required</p>";
 				}
@@ -113,7 +114,7 @@
 				} else {
 
 					$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
-					$stmt->bindValue(':name', $email, PDO::PARAM_STR);
+					$stmt->bindValue(':name', $username, PDO::PARAM_STR);
 					$stmt->execute();
 					foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 					{
