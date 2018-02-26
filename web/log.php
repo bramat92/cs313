@@ -46,6 +46,7 @@
 		if ($error != "") {
 			$error = "<p>There were error(s) in your form:</p>".$error;
 		} else {
+			if ($_POST['signUp'] == '1') {
 			$query = "SELECT id FROM user WHERE email =:em";
 			$statement = $db->prepare($query);
 			$statement->bindValue(':username', $email);
@@ -86,6 +87,8 @@
 				}
 
 			}
+		} else {
+						echo "Logging in..";
 		}
 	}
 ?>
@@ -152,12 +155,35 @@
 					<div class="form-group">
 						<input type="password" class="form-control" id="pword" name="pword" placeholder="Password">
 					</div>
+					<div class="form-group">
+						<input type="hidden" class="form-control" id="signUp" name="signUp" value="1">
+					</div>
 					<div class="form-check">
 							<input type="checkbox" class="form-check-input" id="stay" name="stay" value="1">
 							<label class="form-check-label" for="stay">Stay logged in</label>
 						</div>
 					
 				<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+			</form>
+			
+			<form action="" method="POST">
+				<div class="form-group">
+					<input type="text" name="username" class="form-control" id="username" placeholder="Username">
+					
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" id="pword" name="pword" placeholder="Password">
+				</div>
+				<div class="form-check">
+						<input type="checkbox" class="form-check-input" id="stay" name="stay" value="1">
+						<label class="form-check-label" for="stay">Stay logged in</label>
+					</div>
+				<div class="form-group">
+					<input type="hidden" class="form-control" id="signUp" name="signUp" value="0">
+				</div>
+
+					
+				<button type="submit" name="submit" class="btn btn-primary">Login</button>
 			</form>
 		</div>
 
