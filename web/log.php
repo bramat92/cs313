@@ -188,11 +188,11 @@
 			#signUpForm {
 				display: none;
 			}
-			.showsignupform, .showloginform {
+			.toggleForm, .toggleForms {
 				margin-top: 5px;
 				cursor: pointer;
 			}
-			.showsignupform:hover, .showloginform:hover {
+			.toggleForm:hover, .toggleForm:hover {
 				text-decoration: underline;
 			}
 			#btn {
@@ -235,7 +235,7 @@
 						</div>
 					
 				<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
-				<p><a class="toggleForms">Login<a></p>
+				<p><a class="toggleForm">Login<a></p>
 			</form>
 			
 			
@@ -269,6 +269,12 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 			$(".toggleForms").click(function () {
+				$("#loginForm").toggle();
+				$("#signUpForm").toggle();
+				
+			});
+			
+			$(".toggleForm").click(function () {
 				$("#loginForm").toggle();
 				$("#signUpForm").toggle();
 				
