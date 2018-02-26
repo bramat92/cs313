@@ -119,7 +119,8 @@
 					foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 					{
 						$id = $rows['id'];
-						if (array_key_exists("id", $rows)) {
+						echo $id;
+						if (isset($rows['id'])) {
 							$hpwd = md5(md5($rows['id']).$pword);
 							if ($hpwd == $rows['password']) {
 								$_SESSION['uname'] = $rows['username'];
