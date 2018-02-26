@@ -234,7 +234,7 @@
 							<label class="form-check-label" for="stay">Stay logged in</label>
 						</div>
 					
-				<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+				<button type="submit" id="btn" name="submit" class="btn btn-primary">Sign Up</button>
 				<p><a class="toggleForm">Login<a></p>
 			</form>
 			
