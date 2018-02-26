@@ -87,7 +87,7 @@
 				}
 
 			}
-		  } else {
+		  } else if ($_POST['signUp'] == '0') {
 			$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
 			$stmt->bindValue(':name', $email, PDO::PARAM_STR);
 			$stmt->execute();
