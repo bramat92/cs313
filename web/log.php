@@ -26,10 +26,7 @@
 
 	
 	if (array_key_exists("submit", $_POST)) {
-		
-		echo $_POST['signUp'];
 			
-	
 		$error = "";
 		
 		if ($_POST['signUp'] == '1') {
@@ -47,11 +44,11 @@
 		}
 		
 		if (!$_POST['firstname']) {
-			$error .= "<p>A password is required</p>";
+			$error .= "<p>A firstname is required</p>";
 		}
 		
 		if (!$_POST['lastname']) {
-			$error .= "<p>A password is required</p>";
+			$error .= "<p>A firstname is required</p>";
 		}
 		$username = $_POST['username'];
 		$firstname = $_POST['firstname'];
@@ -62,7 +59,6 @@
 		if ($error != "") {
 			$error = "<p>There were error(s) in your form:</p>".$error;
 		} else {
-			
 			$query = "SELECT id FROM user WHERE email =:em";
 			$statement = $db->prepare($query);
 			$statement->bindValue(':username', $email);
@@ -82,7 +78,7 @@
 				if (!$ptext->execute()) {
 					$error = "<p>Could not sign you up - please try again</p>";
 				} else {
-					foreach ($db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1') as $vl) {
+					foreach ($db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1') as $vl) {6
 						$salt = $vl['id'];
 						$upwd = md5(md5($salt).$pword);
 						$hp = $db->prepare('UPDATE users SET password =:upwd WHERE id =:nid');
@@ -106,41 +102,41 @@
 		  } 
 		}
 		else {
-			if (!$_POST['username']) {
-				$error .= "<p>A username is required</p>";
-			}
-			if (!$_POST['pword']) {
-				$error .= "<p>A password is required</p>";
-			}
-			if ($error != "") {
-				$error = "<p>There were error(s) in your form:</p>".$error;
-			} else {
-
-			$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
-			$stmt->bindValue(':name', $email, PDO::PARAM_STR);
-			$stmt->execute();
-			foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
-			{
-				$id = $rows['id'];
-				if (array_key_exists("id", $rows)) {
-					$hpwd = md5(md5($rows['id']).$pword);
-					if ($hpwd == $rows['password']) {
-						$_SESSION['uname'] = $rows['username'];
-						
-						if ($_POST['stay'] == 1) {
-							setcookie("uname", $rows['username'], time() + 60 * 60 * 365);
-							
-						}
-						
-						header("Location: fghome.php");
-						echo "Login successful";
-					}
-				} else {
-					echo "<p>That login combination could not be found</p>";
+				if (!$_POST['username']) {
+					$error .= "<p>A username is required</p>";
 				}
-			}	
-		}
-		 
+				if (!$_POST['pword']) {
+					$error .= "<p>A password is required</p>";
+				}
+				if ($error != "") {
+					$error = "<p>There were error(s) in your form:</p>".$error;
+				} else {
+
+					$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
+					$stmt->bindValue(':name', $email, PDO::PARAM_STR);
+					$stmt->execute();
+					foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
+					{
+						$id = $rows['id'];
+						if (array_key_exists("id", $rows)) {
+							$hpwd = md5(md5($rows['id']).$pword);
+							if ($hpwd == $rows['password']) {
+								$_SESSION['uname'] = $rows['username'];
+								
+								if ($_POST['stay'] == 1) {
+									setcookie("uname", $rows['username'], time() + 60 * 60 * 365);
+									
+								}
+								
+								header("Location: fghome.php");
+								echo "Login successful";
+							}
+						} else {
+							echo "<p>That login combination could not be found</p>";
+						}
+					}	
+				}
+			} 
 	}
 ?>
 
