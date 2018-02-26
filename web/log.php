@@ -28,6 +28,7 @@
 		$lastname = $_POST['lastname'];
 		$email = $_POST['email'];
 		$pword = $_POST['pword'];
+		
 		if ($error != "") {
 			$error = "<p>There were error(s) in your form:</p>".$error;
 		} else {
@@ -50,6 +51,15 @@
 				if (!$ptext->execute()) {
 					$error = "<p>Could not sign you up - please try again</p>";
 				} else {
+					foreach ($db->query('SELECT id FROM users ORDER BY id DESC LIMIT 1') as $vl) {
+						$salt = $vl['id'];
+						$upwd = md5(md5($salt).$pword);
+						$hp = $db->prepare('UPDATE users SET password =:upwd WHERE id =:nid');
+						$hp->bindValue(':upwd', $upwd, PDO::PARAM_STR);
+						$hp->bindValue(':nid', $salt, PDO::PARAM_INT);
+						$hp->execute();
+					}
+					
 					echo "Sign up successful";
 				}
 
