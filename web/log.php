@@ -189,6 +189,9 @@
 				<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
 			</form>
 			
+			
+			</div>
+			<div class="container">
 			<form action="" method="POST">
 				<div class="form-group">
 					<input type="text" name="username" class="form-control" id="username" placeholder="Username">
