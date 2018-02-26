@@ -112,16 +112,18 @@
 				if ($error != "") {
 					$error = "<p>There were error(s) in your form:</p>".$error;
 				} else {
-
-					$stmt = $db->prepare('SELECT id, password FROM users WHERE username=:name');
-					$stmt->bindValue(':name', $username, PDO::PARAM_STR);
-					$stmt->execute();
-					foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
-					{
-						$id = $rows['id'];
-						echo $id;
-						if (isset($rows['id'])) {
+					$query = "SELECT id, password FROM user WHERE username =:em";
+					$statement = $db->prepare($query);
+					$statement->bindValue(':username', $username);
+					$statement->execute();
+					$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+					if (pg_num_rows($result) > 0) {
+						foreach ($results as $row) {
+							$id = $rows['id'];
+							echo $id;
 							$hpwd = md5(md5($rows['id']).$pword);
+							echo $hpwd;
+							echo $rows['password'];
 							if ($hpwd == $rows['password']) {
 								$_SESSION['uname'] = $rows['username'];
 								
@@ -129,15 +131,20 @@
 									setcookie("uname", $rows['username'], time() + 60 * 60 * 365);
 									
 								}
-								
 								header("Location: fghome.php");
 								echo "Login successful";
+
+							}						
+							 else {
+								echo "<p>That login combination could not be found</p>";
 							}
-						} else {
-							echo "<p>That login combination could not be found</p>";
 						}
-					}	
-				}
+
+					} else {
+						echo "<p>That username does not exist</p>";
+					}
+				}	
+				
 			} 
 	}
 ?>
