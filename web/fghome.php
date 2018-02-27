@@ -42,6 +42,13 @@
 			$ptext->bindValue(':id', $id, PDO::PARAM_INT);
 			$ptext->execute();
 		}
+		
+		if (isset($_GET['sbtn'])){
+			$text = $_GET['search'];
+			$ptext = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id WHERE post LIKE \':value%\' ORDER BY date DESC');
+			$ptext->bindValue(':value', $text, PDO::PARAM_STR);
+			$ptext->execute();
+		}
 ?>
 
 <!DOCTYPE html>
@@ -178,10 +185,10 @@
 
 						
 					</ul>
-<!-- 					<form class="form-inline my-2 my-lg-0"> -->
-<!-- 						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-<!-- 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-<!-- 					</form> -->
+					<form class="form-inline my-2 my-lg-0" action="fghome.php" method="GET">
+						<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" name="sbtn" type="submit">Search</button>
+					</form>
 					<a class="btn btn-primary" id="logOut" href="fglogin.php" role="button">Log Out</a>
 				</div>
 			</nav>
