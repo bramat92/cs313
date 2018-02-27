@@ -140,7 +140,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="fgusers.php">Users</a>
 						</li>
-						<form class="form-inline my-2 my-lg-0" action="fghome.php" method="GET">
+						<form class="form-inline my-2 my-lg-0" action="fgposts.php" method="GET">
 							<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
 							<button class="btn btn-outline-success my-2 my-sm-0" name="sbtn" type="submit">Search</button>
 						</form>
