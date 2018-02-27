@@ -94,6 +94,7 @@
 				margin-bottom: 10px;
 				width: 700px;
 				display: inline-block;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			}
 			.form-group {
 				background-color: #bac3d3;
@@ -106,10 +107,45 @@
 				margin-bottom: 15px;
 			}
 			#postButton {
-				
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				outline: none;
+				border: none;
+				cursor: pointer;
+				display: block;
+				position: relative;
+
+			}
+			#postButton:hover {
+				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+				top: 2px;
+			}
+			#postButton:focus {
+				box-shadow: none;
+				top: 6px;
 			}
 			#logOut {
 				margin-left: 25px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				outline: none;
+				border: none;
+				cursor: pointer;
+				display: block;
+				position: relative;
+
+			}
+			#logOut:hover {
+				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+				top: 2px;
+			}
+			#logOut:focus {
+				box-shadow: none;
+				top: 6px;
+			}
+			nav {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			}
+			#insert {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			}
 		</style>
 	</head>
@@ -165,7 +201,7 @@
 				
 			?>
 			
-			<form action="fghome.php" method="GET">
+			<form action="fghome.php" method="GET" id="insert">
 				<div class="form-group">
 					<textarea class="form-control" name="postText" id="postText" rows="2" placeholder="What's on your mind..."></textarea>
 					<button type="submit" name="button" id="postButton" class="btn btn-primary">Post</button>
