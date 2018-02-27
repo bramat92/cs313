@@ -64,9 +64,30 @@
 			}
 			#displays {
 				width: 700px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				
 			}
 			#logOut {
 				margin-left: 25px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				outline: none;
+				border: none;
+				cursor: pointer;
+				display: block;
+				position: relative;
+
+			}
+			#logOut:hover {
+				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+				top: 2px;
+			}
+			#logOut:focus {
+				box-shadow: none;
+				top: 6px;
+			}
+			nav {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				
 			}
 		</style>
 	</head>
@@ -101,11 +122,7 @@
 
 						
 					</ul>
-					<form class="form-inline my-2 my-lg-0">
-						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					</form>
-					<a class="btn btn-primary" id="logOut" href="fglogin.php" role="button">Log Out</a>
+										<a class="btn btn-primary" id="logOut" href="fglogin.php" role="button">Log Out</a>
 				</div>
 			</nav>
 			<p id = "welcome">Your Followers</p>
