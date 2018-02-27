@@ -43,12 +43,7 @@
 			$ptext->execute();
 		}
 		
-		if (isset($_GET['sbtn'])){
-			$text = $_GET['search'];
-			$ptext = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id WHERE post LIKE \':value%\' ORDER BY date DESC');
-			$ptext->bindValue(':value', $text, PDO::PARAM_STR);
-			$ptext->execute();
-		}
+		
 ?>
 
 <!DOCTYPE html>
@@ -218,14 +213,29 @@
 			
 			<?php	
 				
-				foreach ($db->query('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id ORDER BY date DESC') as $rows)
-				{
-					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
-					echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
-					echo '</div>';
-					echo '<br>';
+				if (isset($_GET['sbtn'])){
+					$text = $_GET['search'];
+					$ptext = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id WHERE post LIKE \':value%\' ORDER BY date DESC');
+					$ptext->bindValue(':value', $text, PDO::PARAM_STR);
+					$ptext->execute();
+					foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) {
+						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
+						echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+						echo '</div>';
+						echo '<br>';
+					}
+				} else {
+					foreach ($db->query('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id ORDER BY date DESC') as $rows)
+					{
+						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
+						echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+						echo '</div>';
+						echo '<br>';
+					}
 				}
+				
 			?>
 		</div>
 
