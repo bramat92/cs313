@@ -1,0 +1,44 @@
+2018-01-16 11:00:49.404 MST [48142] LOG:  listening on IPv4 address "127.0.0.1", port 5000
+2018-01-16 11:00:49.405 MST [48142] LOG:  listening on Unix socket "/Applications/mappstack-5.6.32-1/postgresql/.s.PGSQL.5000"
+2018-01-16 11:00:49.420 MST [48143] LOG:  database system was shut down at 2018-01-16 11:00:48 MST
+2018-01-16 11:00:49.423 MST [48142] LOG:  database system is ready to accept connections
+2018-01-16 11:00:49.925 MST [48150] LOG:  incomplete startup packet
+2018-01-16 11:01:00.862 MST [48142] LOG:  received fast shutdown request
+2018-01-16 11:01:00.917 MST [48142] LOG:  aborting any active transactions
+2018-01-16 11:01:00.917 MST [48142] LOG:  worker process: logical replication launcher (PID 48149) exited with exit code 1
+2018-01-16 11:01:00.917 MST [48144] LOG:  shutting down
+2018-01-16 11:01:00.926 MST [48142] LOG:  database system is shut down
+2018-01-16 11:03:22.213 MST [48336] LOG:  listening on IPv4 address "127.0.0.1", port 5000
+2018-01-16 11:03:22.227 MST [48336] LOG:  listening on Unix socket "/Applications/mappstack-5.6.32-1/postgresql/.s.PGSQL.5000"
+2018-01-16 11:03:22.245 MST [48337] LOG:  database system was shut down at 2018-01-16 11:01:00 MST
+2018-01-16 11:03:22.265 MST [48336] LOG:  database system is ready to accept connections
+2018-01-17 15:49:39.655 MST [48341] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-17 15:55:44.736 MST [55498] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-17 15:57:27.781 MST [48341] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-17 15:57:40.005 MST [55531] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-17 22:49:21.495 MST [48341] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-17 22:49:34.551 MST [57555] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 00:21:10.286 MST [48341] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 11:33:24.836 MST [48341] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 11:33:37.555 MST [67097] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 15:44:03.810 MST [70136] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 17:14:08.051 MST [70178] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 17:18:07.870 MST [70445] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 18:04:01.949 MST [71781] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 18:05:01.337 MST [48341] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 18:05:43.918 MST [48341] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 18:05:59.416 MST [71796] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 18:11:47.930 MST [71839] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2018-01-18 18:17:45.070 MST [48336] LOG:  received smart shutdown request
+2018-01-18 18:17:45.482 MST [48336] LOG:  worker process: logical replication launcher (PID 48343) exited with exit code 1
+2018-01-18 18:17:45.482 MST [48338] LOG:  shutting down
+2018-01-18 18:17:46.545 MST [48336] LOG:  database system is shut down
+2018-01-30 10:09:01.873 MST [933] LOG:  listening on IPv4 address "127.0.0.1", port 5000
+2018-01-30 10:09:01.882 MST [933] LOG:  listening on Unix socket "/Applications/mappstack-5.6.32-1/postgresql/.s.PGSQL.5000"
+2018-01-30 10:09:02.292 MST [935] LOG:  database system was shut down at 2018-01-18 18:17:46 MST
+2018-01-30 10:09:02.557 MST [933] LOG:  database system is ready to accept connections
+2018-01-30 10:32:12.773 MST [933] LOG:  received fast shutdown request
+2018-01-30 10:32:12.801 MST [933] LOG:  aborting any active transactions
+2018-01-30 10:32:12.830 MST [933] LOG:  worker process: logical replication launcher (PID 942) exited with exit code 1
+2018-01-30 10:32:12.830 MST [936] LOG:  shutting down
+2018-01-30 10:32:13.029 MST [933] LOG:  database system is shut down
