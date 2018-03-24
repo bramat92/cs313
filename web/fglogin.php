@@ -169,34 +169,27 @@
 			.container {
 				background-color: #aac8f7;
 				width: 500px;
-				padding: 50px;
+				padding: 30px;
 				border-radius: 10px;
 				text-align: center;
 			}
-			h2 {
-				text-decoration: underline;
-			}
 			
-			body {
-				 background: url('friends.jpg') no-repeat center center fixed; 
-				-webkit-background-size: cover;
-				-moz-background-size: cover;
-				-o-background-size: cover;
-				background-size: cover;
-
+			
+			#title {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 50%;
+				height: auto;
 			}
 			#signUpForm {
 				display: none;
 			}
-			.toggleForm, .toggleForms {
-				margin-top: 5px;
-				cursor: pointer;
-			}
-			.toggleForm:hover, .toggleForm:hover {
-				text-decoration: underline;
+			h2 {
+				margin-bottom: 25px;
 			}
 			#btn {
-				margin-bottom: 15px;
+		
 				cursor: pointer;
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				outline: none;
@@ -222,12 +215,14 @@
 		</style>
 	</head>
 	<body>
-		<h1>Friendstagram</h1>
+		<img id="title" src="Friendstagram.png" alt="York State University">
 		<div class="container">
 		<div id="error"><?php echo $error; ?></div>
-			<h2>Log In</h2>
+			
 			<form action="" method="POST" id="signUpForm">
+				
 				<div class="form-group">
+				<h2>Sign Up</h2>
 					<input type="text" name="username" class="form-control" id="username" placeholder="Username">
 					
 				</div>
@@ -252,14 +247,15 @@
 							<input type="checkbox" class="form-check-input" id="stay" name="stay" value="1">
 							<label class="form-check-label" for="stay">Stay logged in</label>
 						</div>
-					
-				<button type="submit" id="btn" name="submit" class="btn btn-primary">Sign Up</button>
-				<p><a class="toggleForm">Login<a></p>
+					<br>
+				<button type="submit" id="btn" name="submit" class="btn btn-primary">Sign Up</button><br>
+				<a class="toggleForm">Login<a>
 			</form>
 			
 			
 			<form action="" method="POST" id="loginForm">
 				<div class="form-group">
+				<h2>Sign In</h2>
 					<input type="text" name="username" class="form-control" id="username" placeholder="Username">
 					
 				</div>
@@ -275,8 +271,8 @@
 				</div>
 
 					
-				<button type="submit" name="submit" id="btn" class="btn btn-primary">Login</button>
-				<p><a class="toggleForms">Sign Up<a></p>
+				<button type="submit" name="submit" id="btn" class="btn btn-primary">Login</button><br>
+				<a class="toggleForms">Sign Up<a>
 			</form>
 		</div>
 

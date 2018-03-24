@@ -33,16 +33,17 @@
 					text-decoration: underline;
 					margin: 50px;
 				}
-				body {
-					 background: url('friends.jpg') no-repeat center center fixed; 
-					-webkit-background-size: cover;
-					-moz-background-size: cover;
-					-o-background-size: cover;
-					background-size: cover;
-					
+				
+				#title {
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+					max-width: 50%;
+					height: auto;
 				}
 				nav {
 					border-radius: 5px;
+					margin-bottom: 20px;
 				}
 				
 				#welcome {
@@ -57,16 +58,25 @@
 					text-decoration: underline;
 				}
 				#name {
-					font-size: 30px;
+					font-size: 20px;
 					text-align: center;
 					margin-bottom: 20px;
 				}
-				#displays {
+				#displaysName {
+					display: block;
 					margin-left: auto;
 					margin-right: auto;
-					margin-bottom: 10px;
-					width: 700px;
-					display: inline-block;
+					max-width: 50%;
+					height: auto;
+					background-color: #e1e5ed;
+					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				}
+				#displays {
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+					max-width: 50%;
+					height: auto;
 					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				}
 				#logOut {
@@ -90,10 +100,17 @@
 				nav {
 					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				}
+				#titlePost {
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+					max-width: 50%;
+					height: auto;
+				}
 			</style>
 		</head>
 		<body>
-			<p id="friendstagram">Friendstagram</p>
+			<img id="title" src="Friendstagram.png" alt="York State University">
 			<div class="container">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 					<a class="navbar-brand" href="fghome.php">FG</a>
@@ -125,7 +142,7 @@
 						<a class="btn btn-primary" id="logOut" href="fglogin.php" role="button">Log Out</a>
 					</div>
 				</nav>
-				<p id = "welcome">All Users</p>
+				<img id="titlePost" src="users.png" alt="York State University">
 				<?php
 					
 					$stmt = $db->prepare('SELECT * FROM users WHERE username=:name');
@@ -133,9 +150,12 @@
 					$stmt->execute();
 					foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 					{
-						echo '<p id = "name">';
-						echo 'Hi ' . $rows['firstname'] . ' ' . $rows['lastname']; 
+						echo '<div class="alert alert-secondary" id = "displaysName" role="alert">';
+						echo '<p id = "name">Hi: ';
+						echo $rows['firstname'] . ' ' . $rows['lastname']; 
 						echo '</p>';
+						echo '</div>';
+						echo '<br>';
 					}
 					
 					foreach ($db->query('SELECT username, firstname, lastname, to_char(created_at, \'YYYY/MM/DD\') AS date FROM users') as $rows)
