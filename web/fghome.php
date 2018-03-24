@@ -53,13 +53,6 @@
 			$cidq->execute();
 		}
 		
-		if (isset($_GET['lbutton'])){
-			$lid = $_GET['lid'];
-			$lidq = $db->prepare('INSERT INTO likes (user_id, post_id) VALUES (:id, :cd)');
-			$lidq->bindValue(':id', $id, PDO::PARAM_INT);
-			$lidq->bindValue(':cd', $lid, PDO::PARAM_INT);
-			$lidq->execute();
-		}
 		
 ?>
 
@@ -137,7 +130,7 @@
 			#postText {
 				margin-bottom: 15px;
 			}
-			#postButton, #lb, #cb {
+			#postButton {
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				outline: none;
 				border: none;
@@ -146,30 +139,11 @@
 				position: relative;
 
 			}
-			#postButton:hover, #lb:hover, #cb:hover {
+			#postButton:hover {
 				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 				top: 2px;
 			}
-			#postButton:focus #lbfocus, #cb:focus {
-				box-shadow: none;
-				top: 6px;
-			}
-			
-			#lb {
-				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-				outline: none;
-				border: none;
-				cursor: pointer;
-				display: block;
-				position: relative;
-				
-
-			}
-			#lb:hover {
-				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-				top: 2px;
-			}
-			#lb:focus, {
+			#postButton:focus {
 				box-shadow: none;
 				top: 6px;
 			}
@@ -212,6 +186,23 @@
 				box-shadow: none;
 				top: 6px;
 			}
+			#cb {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				outline: none;
+				border: none;
+				cursor: pointer;
+				display: block;
+				position: relative;
+				top: 10px;
+			}
+			#cb:hover {
+				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+				top: 2px;
+			}
+			#cb:active {
+				box-shadow: none;
+				top: 6px;	
+			}
 			nav {
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				margin-bottom: 30px;
@@ -229,9 +220,6 @@
 			}
 			.nav-link:hover {
 				text-decoration: underline;
-			}
-			#likes {
-				margin-left: 90%;
 			}
 		</style>
 	</head>
@@ -346,28 +334,19 @@
 							</div>
 						</div>
 						</form>';
-						echo '<br>';
-						echo '
-							<form action="fghome.php" method="get">
-								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
-								<button type="submit" id="lb" name="lbutton" class="btn btn-primary">Like</button>
-							</form>';
-						$lks = $db->prepare('SELECT count(*) AS likes FROM likes where post_id=:lid');
-						$lks->bindValue(':lid', $rows['pid'], PDO::PARAM_INT);
-						$lks->execute();
-						foreach ($lks->fetchAll(PDO::FETCH_ASSOC) as $rows)  {
-							echo '<b id="likes">' . $rows['likes'] . ' likes</b>';
+						foreach ($db->query('SELECT count(*) AS likes FROM likes where post_id = 2') as $rows) {
+							echo '<span id="likes">' . $rows['lkes'] . 'likes</span>';
 						}
-						
+
 						echo '<hr>';
 						echo '<p>Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
 						$ptext->execute();
-						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $row) 
+						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) 
 						{
-							echo '<b>' . $row['firstname'] . ' ' . $row['lastname'] . ': </b>' . $row['comment_text'] . '<br>';
-							echo  '<i>' . $row['date'] . '</i><br>';
+							echo '<b>' . $rows['firstname'] . ' ' . $rows['lastname'] . ': </b>' . $rows['comment_text'] . '<br>';
+							echo  '<i>' . $rows['date'] . '</i><br>';
 						}
 						echo '</div>';
 						echo '<br>';
