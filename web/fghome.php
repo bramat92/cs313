@@ -254,14 +254,14 @@
 						echo '<br>';
 					}
 				} else {
-					foreach ($db->query('SELECT posts.id, post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id ORDER BY date DESC') as $rows)
+					foreach ($db->query('SELECT posts.id AS pid, post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id ORDER BY date DESC') as $rows)
 					{
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '<hr>';
 						echo '<p>Comments</p>';
-						echo $rows['posts.id'];
+						echo $rows['pid'];
 						$ptext = $db->prepare('SELECT comment_text, post FROM posts LEFT JOIN comments ON comments.post_id = posts.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $rows['posts.id'], PDO::PARAM_INT);
 						$ptext->execute();
