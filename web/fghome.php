@@ -267,7 +267,7 @@
 						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) 
 						{
 							echo '<b>' . $rows['firstname'] . ' ' . $rows['lastname'] . ': </b>' . $rows['comment_text'] . '<br>';
-							echo  '<i>' . $rows['date'] . '</i>';
+							echo  '<i>' . $rows['date'] . '</i><br>';
 						}
 						echo '</div>';
 						echo '<br>';
