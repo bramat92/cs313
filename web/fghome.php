@@ -254,16 +254,14 @@
 						echo '<br>';
 					}
 				} else {
-					foreach ($db->query('SELECT posts.id, post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id WHERE post LIKE :keyword ORDER BY date DESC') as $rows)
+					foreach ($db->query('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date, comment_text FROM posts JOIN users ON users.id = posts.user_id LEFT JOIN comments ON comments.post_id = posts.id ORDER BY date DESC') as $rows)
 					{
-						$cid = $rows['posts.id'];
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '<hr>';
 						echo '<p>Comments</p>';
-						foreach ($db->query('SELECT comment_text, post FROM posts LEFT JOIN comments ON comments.post_id = posts.id WHERE posts.id = " . $cid ."') as $row)
-						echo $row['comment_text'] . '<br>';
+						echo $rows['comment_text'] . '<br>';
 						echo '</div>';
 						echo '<br>';
 					}
