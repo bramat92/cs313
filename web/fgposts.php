@@ -176,7 +176,7 @@
 					$ptext->execute();
 					foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) {
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-						echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+						echo '<strong>'$rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '
 							<form action="fgposts.php" method="get">
@@ -194,7 +194,7 @@
 					{
 						 
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-						echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+						echo '<strong>'$rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '
 							<form action="fgposts.php" method="get">

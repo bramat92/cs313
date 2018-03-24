@@ -22,7 +22,7 @@ CREATE TABLE posts (
 
 CREATE TABLE comments (
 		id SERIAL NOT NULL PRIMARY KEY,
-		comment_text VARCHAR(255) NOT NULL,
+		comment_text VARCHAR(255),
 		user_id INTEGER NOT NULL,
 		post_id INTEGER NOT NULL,
 		created_at TIMESTAMP DEFAULT NOW(),

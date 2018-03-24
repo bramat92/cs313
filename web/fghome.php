@@ -248,17 +248,20 @@
 					$ptext->execute();
 					foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) {
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-						echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+						echo '<strong>'$rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '</div>';
 						echo '<br>';
 					}
 				} else {
-					foreach ($db->query('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id ORDER BY date DESC') as $rows)
+					foreach ($db->query('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date, comment_text FROM posts JOIN users ON users.id = posts.user_id LEFT JOIN comments ON comments.post_id = posts.id ORDER BY date DESC') as $rows)
 					{
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-						echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+						echo '<strong>'$rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+						echo '<hr>'
+						echo '<p>Comments</p>'
+						echo $rows['comment_text'] . '<br>';
 						echo '</div>';
 						echo '<br>';
 					}
