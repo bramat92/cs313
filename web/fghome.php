@@ -42,7 +42,6 @@
 			$ptext->bindValue(':id', $id, PDO::PARAM_INT);
 			$ptext->execute();
 		}
-		echo $id;
 		
 		if (isset($_GET['cbutton'])){
 			$comment = $_GET['cmt'];
@@ -187,7 +186,23 @@
 				box-shadow: none;
 				top: 6px;
 			}
-			
+			#cb {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				outline: none;
+				border: none;
+				cursor: pointer;
+				display: block;
+				position: relative;
+				top: 10px;
+			}
+			#cb:hover {
+				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+				top: 2px;
+			}
+			#cb:active {
+				box-shadow: none;
+				top: 6px;	
+			}
 			nav {
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				margin-bottom: 30px;
@@ -271,12 +286,6 @@
 				
 			</form>
 			
-			<form action="fghome.php" method="GET">
-				<input type="text" name="cmt">
-				<input type="hidden" name="id" value="">
-				<button type="submit" name="cbutton" class="btn btn-primary">Comment</button>
-			</form>
-			
 			<?php	
 				
 				if (isset($_GET['sbtn'])){
@@ -298,8 +307,8 @@
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"<br>';
-						echo '<button type="button" id="cancel" class="btn btn-primary" data-toggle="modal" data-target="#commentModalCenter">
-							Launch demo modal
+						echo '<button type="button" id="cb" class="btn btn-primary" data-toggle="modal" data-target="#commentModalCenter">
+							Comment
 						</button>
 
 						<!-- Modal -->
@@ -315,7 +324,7 @@
 									</div>
 									<div class="modal-body">
 										<input class="form-control" type="text" name="cmt">
-										<input type="hidden" name="id" value="'. $rows['pid'] .'">
+										<input type="hidden" name="pid" value="'. $rows['pid'] .'">
 									</div>
 									<div class="modal-footer">
 										<button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
