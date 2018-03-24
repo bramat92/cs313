@@ -53,6 +53,13 @@
 			$cidq->execute();
 		}
 		
+		if (isset($_GET['lbutton'])){
+			$lid = $_GET['lid'];
+			$lidq = $db->prepare('INSERT INTO likes (user_id, post_id) VALUES (:id, :cd)');
+			$lidq->bindValue(':id', $id, PDO::PARAM_INT);
+			$lidq->bindValue(':cd', $lid, PDO::PARAM_INT);
+			$lidq->execute();
+		}
 		
 ?>
 
@@ -222,7 +229,7 @@
 				text-decoration: underline;
 			}
 			#likes {
-				margin-left: 50%;
+				margin-left: 90%;
 			}
 		</style>
 	</head>
@@ -337,11 +344,16 @@
 							</div>
 						</div>
 						</form>';
+						echo '
+							<form action="fghome.php" method="get">
+								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
+								<button type="submit" id="cancel" name="lbutton" class="btn btn-primary">Like</button>
+							</form>';
 						$ptext = $db->prepare('SELECT count(*) AS likes FROM likes where post_id=:cid');
 						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
 						$ptext->execute();
 						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows)  {
-							echo '<i id="likes">' . $rows['likes'] . ' likes</i>';
+							echo $rows['likes'] . '<i id="likes"> likes</i>';
 						}
 						
 						echo '<hr>';
