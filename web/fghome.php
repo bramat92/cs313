@@ -261,12 +261,14 @@
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '<hr>';
 						echo '<p>Comments</p>';
-						$ptext = $db->prepare('SELECT comment_text, post FROM posts LEFT JOIN comments ON comments.post_id = posts.id WHERE posts.id=:cid');
+						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
 						$ptext->execute();
 						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) 
 						{
-							echo $rows['comment_text'] . '<br>';	
+							echo '<ol>';
+							echo '<li>' . $rows['firstname'] . ' ' . $rows['lastname'] . ' ' . $rows['comment_text'] . ' ' . $rows['date'] . '</li><br>';
+							echo '</ol>';	
 						}
 						echo '</div>';
 						echo '<br>';
