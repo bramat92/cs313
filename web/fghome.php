@@ -42,10 +42,13 @@
 			$ptext->bindValue(':id', $id, PDO::PARAM_INT);
 			$ptext->execute();
 		}
+		echo $id;
 		
 		if (isset($_GET['cbutton'])){
+			$comment = 'This is awesome';
 			$cid = $_GET['pid'];
-			$cidq = $db->prepare('INSERT INTO comments (comment_text, user_id, post_id) VALUES ("This is awesome", :id, :cd)');
+			$cidq = $db->prepare('INSERT INTO comments (comment_text, user_id, post_id) VALUES (:cm, :id, :cd)');
+			$cidq->bindValue(':cm', $comment, PDO::PARAM_STR);
 			$cidq->bindValue(':id', $id, PDO::PARAM_INT);
 			$cidq->bindValue(':cd', $cid, PDO::PARAM_INT);
 			$cidq->execute();
