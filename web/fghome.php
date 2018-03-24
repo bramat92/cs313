@@ -334,10 +334,6 @@
 							</div>
 						</div>
 						</form>';
-						foreach ($db->query('SELECT count(*) AS likes FROM likes where post_id = 2') as $rows) {
-							echo '<span id="likes">' . $rows['lkes'] . 'likes</span>';
-						}
-
 						echo '<hr>';
 						echo '<p>Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
