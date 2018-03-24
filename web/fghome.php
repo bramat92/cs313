@@ -261,7 +261,8 @@
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '<hr>';
 						echo '<p>Comments</p>';
-						echo $rows['comment_text'] . '<br>';
+						foreach ($db->query('SELECT comment_text, post FROM posts LEFT JOIN comments ON comments.post_id = posts.id WHERE posts.id = 2') as $row)
+						echo $row['comment_text'] . '<br>';
 						echo '</div>';
 						echo '<br>';
 					}

@@ -133,3 +133,5 @@ INSERT INTO follows(follower_id, followee_id) VALUES
 (1, 2), (1, 3), (2, 1), (2, 4), (3, 5), (3, 6), (4, 7), 
 (4, 8), (5, 9), (5, 10), (6, 9), (6, 8), (7, 6), (7, 10),
 (8, 4), (8, 3), (9, 2), (9, 1), (10, 7), (10, 5);
+
+SELECT posts.id, posts, posts.created_at AS date FROM posts JOIN users ON users.id = posts.user_id LEFT JOIN comments ON comments.post_id = ORDER BY date DESC;
