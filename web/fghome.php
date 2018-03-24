@@ -8,7 +8,7 @@
 	if(isset($_SESSION['uname'])) {
 		$variable = $_SESSION['uname'];		
 	} else {
-		header("Location: log.php");
+		header("Location: fglogin.php");
 	}
 	
 		
@@ -249,6 +249,12 @@
 				
 			</form>
 			
+			<form action="fghome.php" method="GET">
+				<input type="text" name="cmt">
+				<input type="hidden" name="id" value="">
+				<button type="submit" name="cbutton" class="btn btn-primary">Comment</button>
+			</form>
+			
 			<?php	
 				
 				if (isset($_GET['sbtn'])){
@@ -270,12 +276,6 @@
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
-						echo '
-							<form action="fghome.php" method="get">
-								<input type="text" name="cmt">
-								<input type="hidden" name="id" value="'. $rows['pid'] .'">
-								<button type="submit" id="btn" name="cbutton" class="btn btn-primary">Comment</button>
-							</form>';
 						echo '<hr>';
 						echo '<p>Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
