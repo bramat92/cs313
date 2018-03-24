@@ -45,11 +45,11 @@
 		
 		if (isset($_GET['cbutton'])){
 			$comment = $_GET['cmt'];
-			$cid = $_GET['pid'];
+			$cid = $_GET['psid'];
 			$cidq = $db->prepare('INSERT INTO comments (comment_text, user_id, post_id) VALUES (:cm, :id, :cd)');
 			$cidq->bindValue(':cm', $comment, PDO::PARAM_STR);
 			$cidq->bindValue(':id', $id, PDO::PARAM_INT);
-			$cidq->bindValue(':cd', $cid, PDO::PARAM_INT);
+			$cidq->bindValue(':cd', $cd, PDO::PARAM_INT);
 			$cidq->execute();
 		}
 		
@@ -324,7 +324,7 @@
 									</div>
 									<div class="modal-body">
 										<input class="form-control" type="text" name="cmt">
-										<input type="hidden" name="pid" value="'. $rows['pid'] .'">
+										<input type="hidden" name="psid" value="'. $rows['pid'] .'">
 									</div>
 									<div class="modal-footer">
 										<button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
