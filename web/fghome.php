@@ -45,7 +45,7 @@
 		echo $id;
 		
 		if (isset($_GET['cbutton'])){
-			$comment = 'This is awesome';
+			$comment = $_GET['cmt'];
 			$cid = $_GET['pid'];
 			$cidq = $db->prepare('INSERT INTO comments (comment_text, user_id, post_id) VALUES (:cm, :id, :cd)');
 			$cidq->bindValue(':cm', $comment, PDO::PARAM_STR);
@@ -272,6 +272,7 @@
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '
 							<form action="fghome.php" method="get">
+								<input type="text" name="cmt">
 								<input type="hidden" name="id" value="'. $rows['pid'] .'">
 								<button type="submit" id="btn" name="cbutton" class="btn btn-primary">Comment</button>
 							</form>';
