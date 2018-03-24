@@ -261,6 +261,7 @@
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
 						echo '<hr>';
 						echo '<p>Comments</p>';
+						echo $rows['posts.id'];
 						$ptext = $db->prepare('SELECT comment_text, post FROM posts LEFT JOIN comments ON comments.post_id = posts.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $rows['posts.id'], PDO::PARAM_INT);
 						$ptext->execute();
