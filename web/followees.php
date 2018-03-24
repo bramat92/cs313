@@ -133,7 +133,7 @@
 										<a class="btn btn-primary" id="logOut" href="fglogin.php" role="button">Log Out</a>
 				</div>
 			</nav>
-			<img id="title" src="posts.png" alt="York State University">
+			<img id="title" src="following.png" alt="York State University">
 			<?php
 				
 				

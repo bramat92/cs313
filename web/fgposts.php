@@ -18,9 +18,20 @@
 		}
 		if (isset($_GET['button'])){
 			$deleteid = $_GET['id'];
-			$pid = $db->prepare('DELETE FROM posts WHERE id=:idn');
+			$pid = $db->prepare('DELETE from comments where post_id=:idn');
 			$pid->bindValue(':idn', $deleteid, PDO::PARAM_INT);
 			$pid->execute();
+			$pid = $db->prepare('DELETE from likes where post_id=:idn');
+			$pid->bindValue(':idn', $deleteid, PDO::PARAM_INT);
+			$pid->execute();
+			$pid = $db->prepare('DELETE from posts_tags where post_id=:idn');
+			$pid->bindValue(':idn', $deleteid, PDO::PARAM_INT);
+			$pid->execute();
+			$pid = $db->prepare('DELETE from posts where id=:idn');
+			$pid->bindValue(':idn', $deleteid, PDO::PARAM_INT);
+			$pid->execute();
+			
+
 		}
 		
 ?>
