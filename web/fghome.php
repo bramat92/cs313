@@ -158,6 +158,8 @@
 				position: relative;
 
 			}
+			
+			
 			#logOut:hover {
 				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 				top: 2px;
@@ -166,6 +168,26 @@
 				box-shadow: none;
 				top: 6px;
 			}
+			
+			#cancel {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				outline: none;
+				border: none;
+				cursor: pointer;
+				display: block;
+				position: relative;
+			}
+			
+			#cancel:hover {
+				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+				top: 2px;
+			}
+			
+			#cancel:active {
+				box-shadow: none;
+				top: 6px;
+			}
+			
 			nav {
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				margin-bottom: 30px;
@@ -275,7 +297,34 @@
 					{
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
-						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"<br>';
+						echo '<button type="button" id="cancel" class="btn btn-primary" data-toggle="modal" data-target="#commentModalCenter">
+							Launch demo modal
+						</button>
+
+						<!-- Modal -->
+						<form action="fghome.php" method="GET" >
+						<div class="modal fade" id="commentModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">Enter comment below</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<input class="form-control" type="text" name="cmt">
+										<input type="hidden" name="id" value="'. $rows['pid'] .'">
+									</div>
+									<div class="modal-footer">
+										<button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+										<button type="submit" id="logOut" name="cbutton" class="btn btn-primary">Comment</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						</form>';
 						echo '<hr>';
 						echo '<p>Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
