@@ -144,9 +144,13 @@
 				{
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
-					//echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+					echo '<br>';
+					echo '<form action="fgfollowing.php" method="get">
+						<input type="hidden" name="id" value="'. $rows['uid'] .'">
+						<button type="submit" id="btn" name="button" class="btn btn-primary">Unfollow</button>
+					</form>';
 					echo '</div>';
-					//echo '<br>';
+
 				}
 				
 				

@@ -163,6 +163,11 @@
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo 'Username: ' . $rows['username'] . '<br>' . $rows['firstname'] . ' ' . 
 						$rows['lastname'] . '<br> Member since: ' . $rows['date']; 
+						echo '<br>';
+						echo '<form action="fgfollowing.php" method="get">
+							<input type="hidden" name="id" value="'. $rows['uid'] .'">
+							<button type="submit" id="btn" name="button" class="btn btn-primary">Follow</button>
+						</form>';
 						echo '</div>';
 						echo '<br>';
 					}
