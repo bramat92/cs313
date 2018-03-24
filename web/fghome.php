@@ -144,7 +144,7 @@
 				cursor: pointer;
 				display: block;
 				position: relative;
-
+				top: 10px;	
 			}
 			#postButton:hover,  #cb:hover {
 				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
