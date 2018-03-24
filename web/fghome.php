@@ -221,6 +221,9 @@
 			.nav-link:hover {
 				text-decoration: underline;
 			}
+			#likes {
+				text-align: left;
+			}
 		</style>
 	</head>
 	<body>
@@ -335,7 +338,7 @@
 						</div>
 						</form>';
 						foreach ($db->query('SELECT count(*) AS likes FROM likes where post_id = 2') as $rows) {
-							echo $rows['lkes'] . 'likes';
+							echo '<span id="likes">' . $rows['likes'] . 'likes</span>';
 						}
 
 						echo '<hr>';
