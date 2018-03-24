@@ -43,6 +43,14 @@
 			$ptext->execute();
 		}
 		
+		if (isset($_GET['cbutton'])){
+			$cid = $_GET['pid'];
+			$cidq = $db->prepare('INSERT INTO comments (comment_text, user_id, post_id) VALUES ("This is awesome", :id, :cd)');
+			$cidq->bindValue(':id', $id, PDO::PARAM_INT);
+			$cidq->bindValue(':cd', $cid, PDO::PARAM_INT);
+			$cidq->execute();
+		}
+		
 		
 ?>
 
@@ -259,6 +267,11 @@
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+						echo '
+							<form action="fghome.php" method="get">
+								<input type="hidden" name="id" value="'. $rows['pid'] .'">
+								<button type="submit" id="btn" name="cbutton" class="btn btn-primary">Comment</button>
+							</form>';
 						echo '<hr>';
 						echo '<p>Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
