@@ -210,6 +210,24 @@
 				box-shadow: none;
 				top: 6px;	
 			}
+			
+			#lb {
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				outline: none;
+				border: none;
+				cursor: pointer;
+				display: block;
+				position: relative;
+				top: 20px;
+			}
+			#lb:hover {
+				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+				top: 2px;
+			}
+			#lb:active {
+				box-shadow: none;
+				top: 6px;	
+			}
 			nav {
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				margin-bottom: 30px;
@@ -347,13 +365,13 @@
 						echo '
 							<form action="fghome.php" method="get">
 								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
-								<button type="submit" id="cancel" name="lbutton" class="btn btn-primary">Like</button>
+								<button type="submit" id="lb" name="lbutton" class="btn btn-primary">Like</button>
 							</form>';
 						$ptext = $db->prepare('SELECT count(*) AS likes FROM likes where post_id=:cid');
 						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
 						$ptext->execute();
 						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows)  {
-							echo $rows['likes'] . '<i id="likes"> likes</i>';
+							echo '<b id="likes">' . $rows['likes'] . ' likes</b>';
 						}
 						
 						echo '<hr>';
