@@ -222,7 +222,7 @@
 				text-decoration: underline;
 			}
 			#likes {
-				text-align: right;
+				margin-left: 50%;
 			}
 		</style>
 	</head>
@@ -341,7 +341,7 @@
 						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
 						$ptext->execute();
 						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows)  {
-							echo '<span id="likes">' . $rows['likes'] . 'likes</span>';
+							echo '<i id="likes">' . $rows['likes'] . ' likes</i>';
 						}
 						
 						echo '<hr>';
