@@ -162,7 +162,7 @@
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>';
 					echo '<em>Since ' . $rows['date'] . '</em>'; 
 					echo '<br>';
-					echo '<form action="fgfollowing.php" method="get">
+					echo '<form action="followees.php" method="get">
 						<input type="hidden" name="unfid" value="'. $rows['uid'] .'">
 						<button type="submit" id="btn" name="unfollow" class="btn btn-primary">Unfollow</button>
 					</form>';
