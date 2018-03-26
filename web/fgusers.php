@@ -158,15 +158,15 @@
 						echo '<br>';
 					}
 					
-					foreach ($db->query('SELECT username, firstname, lastname, to_char(created_at, \'YYYY/MM/DD\') AS date FROM users') as $rows)
+					foreach ($db->query('SELECT id, username, firstname, lastname, to_char(created_at, \'YYYY/MM/DD\') AS date FROM users') as $rows)
 					{
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo 'Username: ' . $rows['username'] . '<br>' . $rows['firstname'] . ' ' . 
 						$rows['lastname'] . '<br> Member since: ' . $rows['date']; 
 						echo '<br>';
-						echo '<form action="fgfollowing.php" method="get">
-							<input type="hidden" name="id" value="'. $rows['uid'] .'">
-							<button type="submit" id="btn" name="button" class="btn btn-primary">Follow</button>
+						echo '<form action="followees.php" method="get">
+							<input type="hidden" name="fid" value="'. $rows['id'] .'">
+							<button type="submit" id="btn" name="fbutton" class="btn btn-primary">Follow</button>
 						</form>';
 						echo '</div>';
 						echo '<br>';
