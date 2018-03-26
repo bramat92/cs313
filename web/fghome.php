@@ -46,7 +46,6 @@
 		if (isset($_GET['cbutton'])){
 			$comment = $_GET['cmt'];
 			$cid = $_GET['pid'];
-			echo $cid;
 			$cidq = $db->prepare('INSERT INTO comments (comment_text, user_id, post_id) VALUES (:cm, :id, :cd)');
 			$cidq->bindValue(':cm', $comment, PDO::PARAM_STR);
 			$cidq->bindValue(':id', $id, PDO::PARAM_INT);
@@ -396,7 +395,7 @@
 							echo '<div id="lks"><b id="likes">' . $rows['likes'] . ' likes</b></div>';
 						}
 						echo '<br><br><hr>';
-						echo '<p>Comments</p>';
+						echo '<p id="uc">Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $num, PDO::PARAM_INT);
 						$ptext->execute();
