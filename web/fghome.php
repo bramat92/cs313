@@ -319,6 +319,8 @@
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"<br>';
+						$num = $rows['pid'];
+						echo $num;
 						echo '<button type="button" id="cb" class="btn btn-primary" data-toggle="modal" data-target="#commentModalCenter">
 							Comment
 						</button>
