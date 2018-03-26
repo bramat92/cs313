@@ -324,10 +324,10 @@
 						echo $num;
 						echo '<button type="button" id="cb" class="btn btn-primary" data-toggle="modal" data-target="#commentModalCenter">
 							Comment
-						</button>
+						</button>';
 
-						<!-- Modal -->
-						<form action="fghome.php" method="GET" >
+						
+						echo '<form action="fghome.php" method="GET" >
 						<div class="modal fade" id="commentModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
