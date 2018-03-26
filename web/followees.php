@@ -26,7 +26,7 @@
 		
 		if (isset($_GET['unfollow'])){
 			$id = $_GET['unfid'];
-			$del = $db->prepare('DELETE FROM follows WHERE follower_id = (SELECT id FROM users WHERE username=:name) AND followee_id = (SELECT id FROM users WHERE id =:id');
+			$del = $db->prepare('DELETE FROM follows WHERE follower_id = (SELECT id FROM users WHERE username=:name) AND followee_id = (SELECT id FROM users WHERE id =:id)');
 			$del->bindValue(':name', $variable, PDO::PARAM_STR);
 			$del->bindValue(':id', $id, PDO::PARAM_INT);
 			$del->execute();
@@ -133,10 +133,10 @@
 							<a class="nav-link" href="fgposts.php">Posts</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="followees.php">Followers</a>
+							<a class="nav-link" href="fgfollowing.php">Followers</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="fgfollowing.php">Following</a>
+							<a class="nav-link" href="followees.php">Following</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="fgusers.php">Users</a>

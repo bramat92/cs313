@@ -122,10 +122,10 @@
 							<a class="nav-link" href="fgposts.php">Posts</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="followees.php">Followers</a>
+							<a class="nav-link" href="fgfollowing.php">Followers</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="fgfollowing.php">Following</a>
+							<a class="nav-link" href="followees.php">Following</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="fgusers.php">Users</a>
