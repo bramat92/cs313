@@ -138,24 +138,22 @@
 			#postText {
 				margin-bottom: 15px;
 			}
-			#postButton, #cb {
+			#postButton {
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				outline: none;
 				border: none;
 				cursor: pointer;
 				display: block;
-				position: relative;
-				top: 10px;	
+				position: relative;	
 			}
-			#postButton:hover,  #cb:hover {
+			#postButton:hover {
 				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 				top: 2px;
 			}
-			#postButton:focus #cb:focus {
+			#postButton:focus {
 				box-shadow: none;
 				top: 6px;
 			}
-			
 			#lb {
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				outline: none;
@@ -164,13 +162,12 @@
 				display: block;
 				position: relative;
 				
-
 			}
 			#lb:hover {
 				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 				top: 2px;
 			}
-			#lb:focus, {
+			#lb:focus {
 				box-shadow: none;
 				top: 6px;
 			}
@@ -229,7 +226,7 @@
 			#cinsert {
 				background-color: #bac3d3;
 				padding: 2px 3px 2px 3px;
-				border-radius: 10px;
+				border-radius: 5px;
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
@@ -338,12 +335,11 @@
 						echo '<form action="fghome.php" method="GET" >
 								<input type="hidden" name="pid" value="'. $num .'">
 								<div id="cinsert">
-									<input type="text" class="form-control" id="commentText" placeholder="Comment">
+									<input type="text" name="cmt" class="form-control" id="commentText" placeholder="Share your thoughts on the posts...">
 								</div>
 								<button type="submit" id="lb" name="cbutton" class="btn btn-primary">Comment</button>
 							</form>';
-						echo '<br>';
-						echo '
+												echo '
 							<form action="fghome.php" method="get">
 								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
 								<button type="submit" id="lb" name="lbutton" class="btn btn-primary">Like</button>
