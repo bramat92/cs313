@@ -138,10 +138,10 @@
 						<li class="nav-item">
 							<a class="nav-link" href="fgposts.php">Posts</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active">
 							<a class="nav-link" href="fgfollowing.php">Followers</a>
 						</li>
-						<li class="nav-item active">
+						<li class="nav-item">
 							<a class="nav-link" href="followees.php">Following</a>
 						</li>
 						<li class="nav-item">
