@@ -18,7 +18,7 @@
 		
 		if (isset($_GET['unfollow'])){
 			$id = $_GET['unfid'];
-			$del = $db->prepare('DELETE FROM follows WHERE follower_id = (SELECT id FROM users WHERE id =:id) AND followee_id = (SELECT id FROM users WHERE username=:name)');
+			$del = $db->prepare('DELETE FROM follows WHERE follower_id = (SELECT id FROM users WHERE username=:name) AND followee_id = (SELECT id FROM users WHERE id =:id)');
 			$del->bindValue(':name', $variable, PDO::PARAM_STR);
 			$del->bindValue(':id', $id, PDO::PARAM_INT);
 			$del->execute();
