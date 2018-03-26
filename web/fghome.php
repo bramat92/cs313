@@ -246,12 +246,13 @@
 			}
 			#lks {
 				float: right;
-					
+				margin-top: 5px;	
 			}
 			#lksb {
 				margin-top: 5px;
 				float: left;
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -340,13 +341,13 @@
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"<br>';
 						$num = $rows['pid'];
 						echo $num;
-						echo '<form action="fghome.php" method="GET" >
+						echo '<div id="cmb"><form action="fghome.php" method="GET" >
 								<input type="hidden" name="pid" value="'. $num .'">
 								<div id="cinsert">
 									<input type="text" name="cmt" class="form-control" id="commentText" placeholder="Share your thoughts on the posts...">
 								</div>
 								<button type="submit" id="lb" name="cbutton" class="btn btn-primary">Comment</button>
-							</form>';
+							</form></div>';
 						echo '<div id="lksb">
 							<form action="fghome.php" method="get">
 								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
@@ -360,7 +361,7 @@
 						{
 							echo '<div id="lks"><b id="likes">' . $rows['likes'] . ' likes</b></div>';
 						}
-						echo '<br><hr>';
+						echo '<br><br><hr>';
 						echo '<p>Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $num, PDO::PARAM_INT);
