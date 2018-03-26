@@ -246,7 +246,7 @@
 			}
 			#lks {
 				float: right;
-				margin-top: 5px;	
+				margin-top: 10px;	
 			}
 			#lksb {
 				margin-top: 5px;
@@ -340,7 +340,6 @@
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"<br>';
 						$num = $rows['pid'];
-						echo $num;
 						echo '<div id="cmb"><form action="fghome.php" method="GET" >
 								<input type="hidden" name="pid" value="'. $num .'">
 								<div id="cinsert">
