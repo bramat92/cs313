@@ -245,7 +245,7 @@
 				
 			}
 			#lks {
-				float: left;
+				float: right;
 					
 			}
 			#lksb {
@@ -360,7 +360,7 @@
 						{
 							echo '<div id="lks"><b id="likes">' . $rows['likes'] . ' likes</b></div>';
 						}
-						echo '<hr>';
+						echo '<br><hr>';
 						echo '<p>Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $num, PDO::PARAM_INT);
