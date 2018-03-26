@@ -246,9 +246,10 @@
 			}
 			#lks {
 				float: left;
-				margin-left: 90%;	
+					
 			}
 			#lksb {
+				margin-top: 5px;
 				float: left;
 			}
 		</style>
