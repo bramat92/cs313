@@ -26,10 +26,10 @@
 		
 		if (isset($_GET['unfollow'])){
 			$id = $_GET['unfid'];
-			$ptext = $db->prepare('DELETE FROM follows WHERE follower_id = (SELECT id FROM users WHERE username=:name) AND followee_id = (SELECT id FROM users WHERE id =:id');
-			$ptext->bindValue(':name', $variable, PDO::PARAM_STR);
-			$ptext->bindValue(':id', $id, PDO::PARAM_INT);
-			$ptext->execute();
+			$del = $db->prepare('DELETE FROM follows WHERE follower_id = (SELECT id FROM users WHERE username=:name) AND followee_id = (SELECT id FROM users WHERE id =:id');
+			$del->bindValue(':name', $variable, PDO::PARAM_STR);
+			$del->bindValue(':id', $id, PDO::PARAM_INT);
+			$del->execute();
 		}
 ?>
 
