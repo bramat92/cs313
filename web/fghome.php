@@ -242,7 +242,14 @@
 				text-decoration: underline;
 			}
 			#likes {
-				margin-left: 90%;
+				
+			}
+			#lks {
+				float: left;
+				margin-left: 90%;	
+			}
+			#lksb {
+				float: left;
 			}
 		</style>
 	</head>
@@ -339,18 +346,18 @@
 								</div>
 								<button type="submit" id="lb" name="cbutton" class="btn btn-primary">Comment</button>
 							</form>';
-												echo '
+						echo '<div id="lksb">
 							<form action="fghome.php" method="get">
 								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
 								<button type="submit" id="lb" name="lbutton" class="btn btn-primary">Like</button>
-							</form>';
+							</form></div>';
 						$num = $rows['pid'];
 						$lks = $db->prepare('SELECT count(*) AS likes FROM likes where post_id=:lid');
 						$lks->bindValue(':lid', $rows['pid'], PDO::PARAM_INT);
 						$lks->execute();
 						foreach ($lks->fetchAll(PDO::FETCH_ASSOC) as $rows)  
 						{
-							echo '<b id="likes">' . $rows['likes'] . ' likes</b>';
+							echo '<div id="lks"><b id="likes">' . $rows['likes'] . ' likes</b></div>';
 						}
 						echo '<hr>';
 						echo '<p>Comments</p>';
