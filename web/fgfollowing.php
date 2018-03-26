@@ -16,6 +16,14 @@
 			die();
 		}
 		
+		if (isset($_GET['unfollow'])){
+			$id = $_GET['unfid'];
+			$del = $db->prepare('DELETE FROM follows WHERE follower_id = (SELECT id FROM users WHERE id =:id) AND followee_id = (SELECT id FROM users WHERE username=:name)');
+			$del->bindValue(':name', $variable, PDO::PARAM_STR);
+			$del->bindValue(':id', $id, PDO::PARAM_INT);
+			$del->execute();
+		}
+		
 		
 ?>
 
@@ -169,9 +177,9 @@
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
 					echo '<em>Since ' . $rows['date'] . '</em>';
 					echo '<br>';
-					echo '<form action="fgfollowing.php" method="get">
-						<input type="hidden" name="id" value="'. $rows['uid'] .'">
-						<button type="submit" id="lb" name="button" class="btn btn-primary">Block</button>
+					echo '<form action="followees.php" method="get">
+						<input type="hidden" name="unfid" value="'. $rows['uid'] .'">
+						<button type="submit" id="lb" name="unfollow" class="btn btn-primary">Unfollow</button>
 					</form>';
 					echo '</div>';
 					

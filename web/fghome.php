@@ -326,10 +326,42 @@
 					$text = "%".$text."%";
 					$ptext->bindValue(':keyword', $text, PDO::PARAM_STR);
 					$ptext->execute();
-					foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) {
+					foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) 
+					{
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
-						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"';
+						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"<br>';
+						$num = $rows['pid'];
+						echo '<div id="cmb"><form action="fghome.php" method="GET" >
+								<input type="hidden" name="pid" value="'. $num .'">
+								<div id="cinsert">
+									<input type="text" name="cmt" class="form-control" id="commentText" placeholder="Share your thoughts on the posts...">
+								</div>
+								<button type="submit" id="lb" name="cbutton" class="btn btn-primary">Comment</button>
+							</form></div>';
+						echo '<div id="lksb">
+							<form action="fghome.php" method="get">
+								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
+								<button type="submit" id="lb" name="lbutton" class="btn btn-primary">Like</button>
+							</form></div>';
+						$num = $rows['pid'];
+						$lks = $db->prepare('SELECT count(*) AS likes FROM likes where post_id=:lid');
+						$lks->bindValue(':lid', $rows['pid'], PDO::PARAM_INT);
+						$lks->execute();
+						foreach ($lks->fetchAll(PDO::FETCH_ASSOC) as $rows)  
+						{
+							echo '<div id="lks"><b id="likes">' . $rows['likes'] . ' likes</b></div>';
+						}
+						echo '<br><br><hr>';
+						echo '<p>Comments</p>';
+						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
+						$ptext->bindValue(':cid', $num, PDO::PARAM_INT);
+						$ptext->execute();
+						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $row) 
+						{
+							echo '<b>' . $row['firstname'] . ' ' . $row['lastname'] . ': </b>' . $row['comment_text'] . '<br>';
+							echo  '<i>' . $row['date'] . '</i><br>';
+						}
 						echo '</div>';
 						echo '<br>';
 					}
