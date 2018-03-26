@@ -352,6 +352,7 @@
 								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
 								<button type="submit" id="lb" name="lbutton" class="btn btn-primary">Like</button>
 							</form>';
+						echo 'The first: ' . $rows['pid'];
 						$lks = $db->prepare('SELECT count(*) AS likes FROM likes where post_id=:lid');
 						$lks->bindValue(':lid', $rows['pid'], PDO::PARAM_INT);
 						$lks->execute();
@@ -359,12 +360,13 @@
 						{
 							echo '<b id="likes">' . $rows['likes'] . ' likes</b>';
 						}
-						
+						echo 'The second: ' . $rows['pid'];
 						echo '<hr>';
 						echo '<p>Comments</p>';
+						echo 'The third: ' . $rows['pid'];
+						echo 'The third: ' . $rows['pid'];
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
-						echo $rows['pid'];
 						$ptext->execute();
 						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $row) 
 						{
