@@ -225,6 +225,19 @@
 				height: auto;
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			}
+			
+			#cinsert {
+				background-color: #bac3d3;
+				padding: 2px 3px 2px 3px;
+				border-radius: 10px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 10px;
+				max-width: 103%;
+				height: auto;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			}
 			.nav-link {
 				text-decoration: none;
 			}
@@ -323,30 +336,12 @@
 						$num = $rows['pid'];
 						echo $num;
 						echo '<form action="fghome.php" method="GET" >
-						<button type="button" id="cb" class="btn btn-primary" data-toggle="modal" data-target="#commentModalCenter">
-							Comment
-						</button>;
-						<div class="modal fade" id="commentModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLongTitle">Enter comment below</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<input class="form-control" type="text" name="cmt">
-										<input type="hidden" name="pid" value="'. $num .'">
-									</div>
-									<div class="modal-footer">
-										<button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-										<button type="submit" id="logOut" name="cbutton" class="btn btn-primary">Comment</button>
-									</div>
+								<input type="hidden" name="pid" value="'. $num .'">
+								<div id="cinsert">
+									<input type="text" class="form-control" id="commentText" placeholder="Comment">
 								</div>
-							</div>
-						</div>
-						</form>';
+								<button type="submit" id="lb" name="cbutton" class="btn btn-primary">Comment</button>
+							</form>';
 						echo '<br>';
 						echo '
 							<form action="fghome.php" method="get">
