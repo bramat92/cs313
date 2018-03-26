@@ -355,7 +355,8 @@
 						$lks = $db->prepare('SELECT count(*) AS likes FROM likes where post_id=:lid');
 						$lks->bindValue(':lid', $rows['pid'], PDO::PARAM_INT);
 						$lks->execute();
-						foreach ($lks->fetchAll(PDO::FETCH_ASSOC) as $rows)  {
+						foreach ($lks->fetchAll(PDO::FETCH_ASSOC) as $rows)  
+						{
 							echo '<b id="likes">' . $rows['likes'] . ' likes</b>';
 						}
 						
@@ -363,6 +364,7 @@
 						echo '<p>Comments</p>';
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
+						echo $rows['pid'];
 						$ptext->execute();
 						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $row) 
 						{
