@@ -360,19 +360,16 @@
 						{
 							echo '<b id="likes">' . $rows['likes'] . ' likes</b>';
 						}
-						echo 'The second: ' . $rows['pid'];
 						echo '<hr>';
 						echo '<p>Comments</p>';
-						echo 'It is here 2: ' . $num;
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
-						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
+						$ptext->bindValue(':cid', $num, PDO::PARAM_INT);
 						$ptext->execute();
 						foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $row) 
 						{
 							echo '<b>' . $row['firstname'] . ' ' . $row['lastname'] . ': </b>' . $row['comment_text'] . '<br>';
 							echo  '<i>' . $row['date'] . '</i><br>';
 						}
-						echo 'It is here 3: ' . $num;
 						echo '</div>';
 						echo '<br>';
 					}
