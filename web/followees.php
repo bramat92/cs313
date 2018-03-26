@@ -23,6 +23,14 @@
 			$ptext->bindValue(':id', $id, PDO::PARAM_INT);
 			$ptext->execute();
 		}
+		
+		if (isset($_GET['unfollow'])){
+			$id = $_GET['unfid'];
+			$ptext = $db->prepare('DELETE FROM follows WHERE follower_id = (SELECT id FROM users WHERE username=:name) AND followee_id = (SELECT id FROM users WHERE id =:id');
+			$ptext->bindValue(':name', $variable, PDO::PARAM_STR);
+			$ptext->bindValue(':id', $id, PDO::PARAM_INT);
+			$ptext->execute();
+		}
 ?>
 
 <!DOCTYPE html>
@@ -145,7 +153,7 @@
 			<?php
 				
 				
-				$stmt = $db->prepare('SELECT users.id AS uid, firstname, lastname, to_char(follows.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN follows ON users.id = follows.followee_id WHERE follower_id = (SELECT id FROM users WHERE username=:name)');
+				$stmt = $db->prepare('SELECT users.id AS uid, firstname, lastname, to_char(follows.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN follows ON users.id = follows.followee_id WHERE follower_id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
@@ -155,8 +163,8 @@
 					echo '<em>Since ' . $rows['date'] . '</em>'; 
 					echo '<br>';
 					echo '<form action="fgfollowing.php" method="get">
-						<input type="hidden" name="id" value="'. $rows['uid'] .'">
-						<button type="submit" id="btn" name="button" class="btn btn-primary">Unfollow</button>
+						<input type="hidden" name="unfid" value="'. $rows['uid'] .'">
+						<button type="submit" id="btn" name="unfollow" class="btn btn-primary">Unfollow</button>
 					</form>';
 					echo '</div>';
 

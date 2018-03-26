@@ -143,7 +143,7 @@
 			<?php
 				
 				
-				$stmt = $db->prepare('SELECT firstname, lastname, to_char(follows.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name)');
+				$stmt = $db->prepare('SELECT firstname, lastname, to_char(follows.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name) ORDER BY date DESC');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
