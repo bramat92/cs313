@@ -352,7 +352,7 @@
 								<input type="hidden" name="lid" value="'. $rows['pid'] .'">
 								<button type="submit" id="lb" name="lbutton" class="btn btn-primary">Like</button>
 							</form>';
-						echo 'The first: ' . $rows['pid'];
+						$num = $rows['pid'];
 						$lks = $db->prepare('SELECT count(*) AS likes FROM likes where post_id=:lid');
 						$lks->bindValue(':lid', $rows['pid'], PDO::PARAM_INT);
 						$lks->execute();
@@ -363,8 +363,7 @@
 						echo 'The second: ' . $rows['pid'];
 						echo '<hr>';
 						echo '<p>Comments</p>';
-						echo 'The third: ' . $rows['pid'];
-						echo 'The third: ' . $rows['pid'];
+						echo 'It is here 2: ' . $num;
 						$ptext = $db->prepare('SELECT firstname, lastname, comment_text, to_char(comments.created_at, \'YYYY/MM/DD\') AS date, post FROM comments LEFT JOIN posts ON comments.post_id = posts.id JOIN users ON comments.user_id = users.id WHERE posts.id=:cid');
 						$ptext->bindValue(':cid', $rows['pid'], PDO::PARAM_INT);
 						$ptext->execute();
@@ -373,6 +372,7 @@
 							echo '<b>' . $row['firstname'] . ' ' . $row['lastname'] . ': </b>' . $row['comment_text'] . '<br>';
 							echo  '<i>' . $row['date'] . '</i><br>';
 						}
+						echo 'It is here 3: ' . $num;
 						echo '</div>';
 						echo '<br>';
 					}
