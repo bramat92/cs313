@@ -107,6 +107,23 @@
 					max-width: 50%;
 					height: auto;
 				}
+				#lb {
+					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+					outline: none;
+					border: none;
+					cursor: pointer;
+					display: block;
+					position: relative;
+					
+				}
+				#lb:hover {
+					box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+					top: 2px;
+				}
+				#lb:focus {
+					box-shadow: none;
+					top: 6px;
+				}
 			</style>
 		</head>
 		<body>
@@ -166,7 +183,7 @@
 						echo '<br>';
 						echo '<form action="followees.php" method="get">
 							<input type="hidden" name="fid" value="'. $rows['id'] .'">
-							<button type="submit" id="btn" name="fbutton" class="btn btn-primary">Follow</button>
+							<button type="submit" id="lb" name="fbutton" class="btn btn-primary">Follow</button>
 						</form>';
 						echo '</div>';
 						echo '<br>';
