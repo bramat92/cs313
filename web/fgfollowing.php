@@ -143,13 +143,14 @@
 			<?php
 				
 				
-				$stmt = $db->prepare('SELECT firstname, lastname FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name)');
+				$stmt = $db->prepare('SELECT firstname, lastname, to_char(follows.created_at, \'YYYY/MM/DD\') AS date FROM users JOIN follows ON users.id = follows.follower_id WHERE followee_id = (SELECT id FROM users WHERE username=:name)');
 				$stmt->bindValue(':name', $variable, PDO::PARAM_STR);
 				$stmt->execute();
 				foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $rows)
 				{
 					echo '<div class="alert alert-secondary" id = "displays" role="alert">';
 					echo $rows['firstname'] . ' ' . $rows['lastname'] . '<br>'; 
+					echo '<em>Since ' . $rows['date'] . '</em>';
 					echo '<br>';
 					echo '<form action="fgfollowing.php" method="get">
 						<input type="hidden" name="id" value="'. $rows['uid'] .'">
