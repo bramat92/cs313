@@ -324,7 +324,7 @@
 				
 				if (isset($_GET['sbtn'])){
 					$text = $_GET['search'];
-					$ptext = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id WHERE post LIKE :keyword ORDER BY date DESC');
+					$ptext = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id WHERE firstname LIKE :keyword ORDER BY date DESC');
 					$text = "%".$text."%";
 					$ptext->bindValue(':keyword', $text, PDO::PARAM_STR);
 					$ptext->execute();
