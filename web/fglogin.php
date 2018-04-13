@@ -174,14 +174,26 @@
 				text-align: center;
 			}
 			
+			body { 
+				background: url(fbg.jpg) no-repeat center center fixed; 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+			}
 			
 			#title {
 				display: block;
+				margin-top: 10px;
 				margin-left: auto;
 				margin-right: auto;
+				margin-bottom: 20px;
+				border-radius: 5px;
 				max-width: 50%;
 				height: auto;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			}
+
 			#signUpForm {
 				display: none;
 			}

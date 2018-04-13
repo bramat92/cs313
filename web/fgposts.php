@@ -122,11 +122,16 @@
 			}
 			#title {
 				display: block;
+				margin-top: 10px;
 				margin-left: auto;
 				margin-right: auto;
+				margin-bottom: 20px;
+				border-radius: 5px;
 				max-width: 50%;
 				height: auto;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			}
+			
 			#titlePost {
 				display: block;
 				margin-left: auto;
@@ -134,11 +139,18 @@
 				max-width: 50%;
 				height: auto;
 			}
+			body { 
+				background: url(fbg.jpg) no-repeat center center fixed; 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+			}
 			
 		</style>
 	</head>
 	<body>
-		<img id="title" src="Friendstagram.png" alt="York State University">
+		<a href="fghome.php"><img id="title" src="Friendstagram.png" alt="Friendstagram"></a>
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<a class="navbar-brand" href="fghome.php">FG</a>

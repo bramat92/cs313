@@ -36,10 +36,14 @@
 				
 				#title {
 					display: block;
+					margin-top: 10px;
 					margin-left: auto;
 					margin-right: auto;
+					margin-bottom: 20px;
+					border-radius: 5px;
 					max-width: 50%;
 					height: auto;
+					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				}
 				nav {
 					border-radius: 5px;
@@ -124,10 +128,17 @@
 					box-shadow: none;
 					top: 6px;
 				}
+				body { 
+					background: url(fbg.jpg) no-repeat center center fixed; 
+					-webkit-background-size: cover;
+					-moz-background-size: cover;
+					-o-background-size: cover;
+					background-size: cover;
+				}
 			</style>
 		</head>
 		<body>
-			<img id="title" src="Friendstagram.png" alt="York State University">
+			<a href="fghome.php"><img id="title" src="Friendstagram.png" alt="Friendstagram"></a>
 			<div class="container">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 					<a class="navbar-brand" href="fghome.php">FG</a>
@@ -170,7 +181,7 @@
 						echo '<div class="alert alert-secondary" id = "displaysName" role="alert">';
 						echo '<p id = "name">Hi: ';
 						echo $rows['firstname'] . ' ' . $rows['lastname']; 
-						echo '</p><p>Below are the current users of Friendstagram that you can follow</p>';
+						echo '</p><p>These are the current users of Friendstagram that you can follow</p>';
 						echo '</div>';
 						echo '<br>';
 					}
