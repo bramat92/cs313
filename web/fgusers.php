@@ -170,7 +170,7 @@
 						echo '<div class="alert alert-secondary" id = "displaysName" role="alert">';
 						echo '<p id = "name">Hi: ';
 						echo $rows['firstname'] . ' ' . $rows['lastname']; 
-						echo '</p>';
+						echo '</p><p>Below are the current users of Friendstagram that you can follow</p>';
 						echo '</div>';
 						echo '<br>';
 					}
