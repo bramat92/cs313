@@ -324,14 +324,14 @@
 				
 				if (isset($_GET['sbtn'])){
 					$text = $_GET['search'];
-					$ptext = $db->prepare('SELECT post, firstname, lastname, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id WHERE firstname LIKE :keyword ORDER BY date DESC');
+					$ptext = $db->prepare('SELECT post, CONCAT(firstname, " ", lastname) AS name, to_char(posts.created_at, \'YYYY/MM/DD\') AS date FROM posts JOIN users ON users.id = posts.user_id WHERE firstname LIKE :keyword ORDER BY date DESC');
 					$text = "%".$text."%";
 					$ptext->bindValue(':keyword', $text, PDO::PARAM_STR);
 					$ptext->execute();
 					foreach ($ptext->fetchAll(PDO::FETCH_ASSOC) as $rows) 
 					{
 						echo '<div class="alert alert-secondary" id = "displays" role="alert">';
-						echo '<strong>' . $rows['firstname'] . ' ' . $rows['lastname'] . '</strong><br>'; 
+						echo '<strong>' . $rows['name'] . '</strong><br>'; 
 						echo $rows['post'] . '<br>'. '"' . $rows['date'] . '"<br>';
 						$num = $rows['pid'];
 						echo '<div id="cmb"><form action="fghome.php" method="GET" >
